@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRPortal.Module", "PRPortal.Module\PRPortal.Module.csproj", "{667D3B90-93A6-42D9-8C53-40D88BD391F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRPortal.Module.Web", "PRPortal.Module.Web\PRPortal.Module.Web.csproj", "{547B365A-2707-4CE3-8C60-FC5544FABBA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRPortal.Web", "PRPortal.Web\PRPortal.Web.csproj", "{B57946F4-2A8E-4B22-AECB-2BE7ED22213D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRPortal.Module.Win", "PRPortal.Module.Win\PRPortal.Module.Win.csproj", "{49570658-9DAF-428A-B985-81A02A0D81D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRPortal.Win", "PRPortal.Win\PRPortal.Win.csproj", "{59373FBD-60AE-4528-BCF7-F2EC1C3CEC33}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		EasyTest|Any CPU = EasyTest|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{667D3B90-93A6-42D9-8C53-40D88BD391F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{667D3B90-93A6-42D9-8C53-40D88BD391F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{667D3B90-93A6-42D9-8C53-40D88BD391F1}.EasyTest|Any CPU.ActiveCfg = EasyTest|Any CPU
+		{667D3B90-93A6-42D9-8C53-40D88BD391F1}.EasyTest|Any CPU.Build.0 = EasyTest|Any CPU
+		{667D3B90-93A6-42D9-8C53-40D88BD391F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{667D3B90-93A6-42D9-8C53-40D88BD391F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{547B365A-2707-4CE3-8C60-FC5544FABBA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{547B365A-2707-4CE3-8C60-FC5544FABBA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{547B365A-2707-4CE3-8C60-FC5544FABBA4}.EasyTest|Any CPU.ActiveCfg = EasyTest|Any CPU
+		{547B365A-2707-4CE3-8C60-FC5544FABBA4}.EasyTest|Any CPU.Build.0 = EasyTest|Any CPU
+		{547B365A-2707-4CE3-8C60-FC5544FABBA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{547B365A-2707-4CE3-8C60-FC5544FABBA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B57946F4-2A8E-4B22-AECB-2BE7ED22213D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B57946F4-2A8E-4B22-AECB-2BE7ED22213D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B57946F4-2A8E-4B22-AECB-2BE7ED22213D}.EasyTest|Any CPU.ActiveCfg = EasyTest|Any CPU
+		{B57946F4-2A8E-4B22-AECB-2BE7ED22213D}.EasyTest|Any CPU.Build.0 = EasyTest|Any CPU
+		{B57946F4-2A8E-4B22-AECB-2BE7ED22213D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B57946F4-2A8E-4B22-AECB-2BE7ED22213D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49570658-9DAF-428A-B985-81A02A0D81D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49570658-9DAF-428A-B985-81A02A0D81D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49570658-9DAF-428A-B985-81A02A0D81D5}.EasyTest|Any CPU.ActiveCfg = EasyTest|Any CPU
+		{49570658-9DAF-428A-B985-81A02A0D81D5}.EasyTest|Any CPU.Build.0 = EasyTest|Any CPU
+		{49570658-9DAF-428A-B985-81A02A0D81D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49570658-9DAF-428A-B985-81A02A0D81D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59373FBD-60AE-4528-BCF7-F2EC1C3CEC33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59373FBD-60AE-4528-BCF7-F2EC1C3CEC33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59373FBD-60AE-4528-BCF7-F2EC1C3CEC33}.EasyTest|Any CPU.ActiveCfg = EasyTest|Any CPU
+		{59373FBD-60AE-4528-BCF7-F2EC1C3CEC33}.EasyTest|Any CPU.Build.0 = EasyTest|Any CPU
+		{59373FBD-60AE-4528-BCF7-F2EC1C3CEC33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59373FBD-60AE-4528-BCF7-F2EC1C3CEC33}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D6F6A54F-CC35-4B2C-B97D-50BD329BCC7B}
+	EndGlobalSection
+EndGlobal

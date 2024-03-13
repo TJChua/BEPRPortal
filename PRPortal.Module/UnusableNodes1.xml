@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="ItemCodes_DetailView" AllowEdit="False" />
+    <ListView Id="ItemCodes_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="ItemName" SortIndex="-1" SortOrder="None" />
+      </Columns>
+    </ListView>
+    <DetailView Id="ItemList_DetailView">
+      <Items Id="Items">
+        <ActionContainerViewItem Id="SearchItem" ActionContainer="ListView" Caption="SearchItem" Orientation="Vertical" />
+      </Items>
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="19.393939393939394">
+            <LayoutGroup Id="ItemList" Direction="Vertical" RelativeSize="100" Caption="Order Qty">
+              <LayoutGroup Id="Auto3f929f8a-1f2f-49f7-b311-355e3bbf672c" ShowCaption="False" Caption="Auto3f929f8a-1f2f-49f7-b311-355e3bbf672c(4)" Direction="Horizontal" Index="0" RelativeSize="100">
+                <LayoutGroup Id="Autof758aa12-94d0-450b-b3d0-c1fb28522dea" ShowCaption="False" Caption="Autof758aa12-94d0-450b-b3d0-c1fb28522dea(5)" Index="0" RelativeSize="34.109589041095887">
+                  <LayoutItem Id="ItemCode" ViewItem="ItemCode" Index="0" RelativeSize="37.5" />
+                  <LayoutItem Id="Order" ViewItem="Order" Index="1" RelativeSize="27.083333333333332" />
+                  <LayoutItem Id="UnitPrice" ViewItem="UnitPrice" Index="2" RelativeSize="35.416666666666664" />
+                </LayoutGroup>
+                <LayoutItem Id="SearchItem" ViewItem="SearchItem" Index="1" RelativeSize="16.438356164383563" />
+                <LayoutItem Id="Item2" Index="2" RelativeSize="49.452054794520549" />
+              </LayoutGroup>
+              <LayoutItem Id="Order" ViewItem="Order" Index="1" RelativeSize="45.333333333333336" Removed="True" />
+              <LayoutItem Id="ItemCode" Removed="True" />
+              <LayoutItem Id="UnitPrice" RelativeSize="24.285714285714285" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="items_Group" Direction="Vertical" RelativeSize="80.606060606060609">
+            <LayoutItem Id="items" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="ItemList_items_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="ItemName" SortIndex="-1" SortOrder="None" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

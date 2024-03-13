@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <ListView Id="AddItem_AddItemDetails_ListView" AllowEdit="True" />
+    <DetailView Id="AddItem_DetailView">
+      <Items Id="Items">
+        <ActionContainerViewItem Id="AddItem" ActionContainer="ListView" Caption="AddItem" Orientation="Vertical" />
+      </Items>
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="19.393939393939394">
+            <LayoutGroup Id="AddItem" Direction="Horizontal" RelativeSize="100">
+              <LayoutGroup Id="Auto38039d34-4a99-4a7f-9149-6cc56ffd5991" ShowCaption="False" Caption="" Index="0" RelativeSize="40.684931506849317">
+                <LayoutItem Id="ItemCode" ViewItem="ItemCode" Index="0" RelativeSize="37.5" />
+                <LayoutItem Id="OrderQty" ViewItem="OrderQty" Index="1" RelativeSize="27.083333333333332" />
+                <LayoutItem Id="UnitPrice" ViewItem="UnitPrice" Index="2" RelativeSize="35.416666666666664" />
+              </LayoutGroup>
+              <LayoutItem Id="AddItem" ViewItem="AddItem" Index="1" RelativeSize="26.164383561643834" />
+              <LayoutItem Id="Item1" Index="2" RelativeSize="33.150684931506852" />
+              <LayoutItem Id="ItemCode" Removed="True" />
+              <LayoutItem Id="OrderQty" Removed="True" />
+              <LayoutItem Id="UnitPrice" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="AddItemDetails_Group" Direction="Vertical" RelativeSize="80.606060606060609">
+            <LayoutItem Id="AddItemDetails" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="AddItemDetails_DetailView" AllowEdit="True" />
+  </Views>
+  <NavigationItems Id="NavigationItems">
+    <Items Id="Items">
+      <Item Id="Default">
+        <Items Id="Items">
+          <Item Id="AddItem_ListView" Removed="True" />
+          <Item Id="AddItemDetails_ListView" Removed="True" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+</Application>
