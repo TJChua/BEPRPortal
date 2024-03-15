@@ -29,7 +29,7 @@ namespace PRPortal.Module.BusinessObjects
         [XafDisplayName("Pending Post")] PendPost = 4,
         [XafDisplayName("Posted")] Post = 5,
         [XafDisplayName("Rejected")] Rejected = 6,
-        [XafDisplayName("Resubmit")] Resubmit = 7
+        [XafDisplayName("Revise")] Resubmit = 7
     }
 
     public enum ApprovalStatusType

@@ -13,6 +13,27 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRPortal.Module.Win", "PRPo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRPortal.Win", "PRPortal.Win\PRPortal.Win.csproj", "{59373FBD-60AE-4528-BCF7-F2EC1C3CEC33}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LoginScreen", "LoginScreen\", "{D6D8DCA6-B6CC-42B8-82E7-39D04A482EAB}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_64785"
+		Debug.AspNetCompiler.PhysicalPath = "LoginScreen\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_64785\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_64785"
+		Release.AspNetCompiler.PhysicalPath = "LoginScreen\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_64785\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "64785"
+		SlnRelativePath = "LoginScreen\"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +71,12 @@ Global
 		{59373FBD-60AE-4528-BCF7-F2EC1C3CEC33}.EasyTest|Any CPU.Build.0 = EasyTest|Any CPU
 		{59373FBD-60AE-4528-BCF7-F2EC1C3CEC33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59373FBD-60AE-4528-BCF7-F2EC1C3CEC33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6D8DCA6-B6CC-42B8-82E7-39D04A482EAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6D8DCA6-B6CC-42B8-82E7-39D04A482EAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6D8DCA6-B6CC-42B8-82E7-39D04A482EAB}.EasyTest|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6D8DCA6-B6CC-42B8-82E7-39D04A482EAB}.EasyTest|Any CPU.Build.0 = Debug|Any CPU
+		{D6D8DCA6-B6CC-42B8-82E7-39D04A482EAB}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6D8DCA6-B6CC-42B8-82E7-39D04A482EAB}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
