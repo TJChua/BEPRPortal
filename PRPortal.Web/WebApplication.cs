@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using DevExpress.ExpressApp.Xpo;
 using DevExpress.ExpressApp.Security;
 using DevExpress.ExpressApp.Security.ClientServer;
+using System.Configuration;
 
 namespace PRPortal.Web {
     // For more typical usage scenarios, be sure to check out https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.Web.WebApplication
@@ -27,6 +28,7 @@ namespace PRPortal.Web {
 
         public PRPortalAspNetApplication() {
             InitializeComponent();
+            this.LoggedOff += Application_LoggedOff;
         }
         protected override IViewUrlManager CreateViewUrlManager() {
             return new ViewUrlManager();
@@ -147,6 +149,16 @@ namespace PRPortal.Web {
             this.DatabaseVersionMismatch += new System.EventHandler<DevExpress.ExpressApp.DatabaseVersionMismatchEventArgs>(this.PRPortalAspNetApplication_DatabaseVersionMismatch);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
+        }
+
+        private void Application_LoggedOff(object sender, EventArgs e)
+        {
+            Redirect(ConfigurationManager.AppSettings["HomePage"].ToString());
+        }
+
+        protected override bool OnLogonFailed(object logonParameters, Exception e)
+        {
+            return false;
         }
     }
 }

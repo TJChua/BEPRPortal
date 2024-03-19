@@ -232,6 +232,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Global.asax" />
+    <EmbeddedResource Include="Images\Logo.png" />
     <Content Include="Images\Logo.svg" />
     <Content Include="Login.aspx" />
   </ItemGroup>
