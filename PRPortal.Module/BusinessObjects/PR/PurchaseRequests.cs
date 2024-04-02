@@ -36,6 +36,8 @@ namespace PRPortal.Module.BusinessObjects.PR
 
     [Appearance("HideDelete", AppearanceItemType.Action, "True", TargetItems = "Delete", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
 
+     [Appearance("HideAddNew", AppearanceItemType.Action, "True", TargetItems = "AddItem", Criteria = "Remarks = null or EventorPurpose = null", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
+
     public class PurchaseRequests : XPObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
         public PurchaseRequests(Session session)
@@ -247,6 +249,7 @@ namespace PRPortal.Module.BusinessObjects.PR
         private string _EventorPurpose;
         [XafDisplayName("Event/Purpose")]
         [Size(254)]
+        [ImmediatePostData]
         [RuleRequiredField(DefaultContexts.Save)]
         [Index(18), VisibleInDetailView(true), VisibleInListView(false), VisibleInLookupListView(false)]
         public string EventorPurpose
@@ -261,6 +264,7 @@ namespace PRPortal.Module.BusinessObjects.PR
         private string _Remarks;
         [XafDisplayName("Remarks")]
         [Size(254)]
+        [ImmediatePostData]
         [RuleRequiredField(DefaultContexts.Save)]
         [Index(20), VisibleInDetailView(true), VisibleInListView(false), VisibleInLookupListView(false)]
         public string Remarks
