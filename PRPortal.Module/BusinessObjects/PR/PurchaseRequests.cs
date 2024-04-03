@@ -36,7 +36,7 @@ namespace PRPortal.Module.BusinessObjects.PR
 
     [Appearance("HideDelete", AppearanceItemType.Action, "True", TargetItems = "Delete", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
 
-     [Appearance("HideAddNew", AppearanceItemType.Action, "True", TargetItems = "AddItem", Criteria = "Remarks = null or EventorPurpose = null", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
+     [Appearance("HideAddNew", AppearanceItemType.Action, "True", TargetItems = "AddItem", Criteria = "Remarks = null or EventorPurpose = null or Requester = null", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
 
     public class PurchaseRequests : XPObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
@@ -52,7 +52,7 @@ namespace PRPortal.Module.BusinessObjects.PR
             if (user != null)
             {
                 CreateUser = user.Oid.ToString();
-                Requester = user.Staff.StaffName;
+                //Requester = user.Staff.StaffName;
                 if (user.Staff != null)
                 {
                     if (user.Staff.Department != null)
@@ -170,6 +170,8 @@ namespace PRPortal.Module.BusinessObjects.PR
 
         private string _Requester;
         [XafDisplayName("Requester")]
+        [RuleRequiredField(DefaultContexts.Save)]
+        [ImmediatePostData]
         [Index(4), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(false)]
         public string Requester
         {
@@ -186,7 +188,7 @@ namespace PRPortal.Module.BusinessObjects.PR
         [Appearance("CostCentre", Enabled = false)]
         [LookupEditorMode(LookupEditorMode.AllItems)]
         //[RuleRequiredField(DefaultContexts.Save)]
-        [Index(5), VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
+        [Index(6), VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
         public vwCostCentre CostCentre
         {
             get { return _CostCentre; }
