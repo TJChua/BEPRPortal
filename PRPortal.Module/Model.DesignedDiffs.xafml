@@ -34,6 +34,11 @@
           <Item Id="Purchase Request Approved" Caption="Purchase Request Approved" ViewId="PurchaseRequests_ListView_Approved" Index="2" IsNewNode="True" />
         </Items>
       </Item>
+      <Item Id="SAP">
+        <Items>
+          <Item Id="vwCostCentre_ListView" Visible="False" />
+        </Items>
+      </Item>
     </Items>
   </NavigationItems>
   <Options>
@@ -72,6 +77,10 @@
     <DetailView Id="InputItemDetails_DetailView" AllowEdit="False" />
     <DetailView Id="InquiryPO_DetailView" AllowEdit="False" />
     <DetailView Id="InquiryPR_DetailView" AllowEdit="False" />
+    <DetailView Id="PermissionPolicyRole_DetailView" AllowDelete="False" />
+    <ListView Id="PermissionPolicyRole_ListView" AllowDelete="False" />
+    <ListView Id="PermissionPolicyRole_Users_ListView" AllowDelete="False" AllowUnlink="True" />
+    <ListView Id="PermissionPolicyUser_Roles_ListView" AllowDelete="False" AllowUnlink="True" />
     <DetailView Id="PurchaseRequestDetails_DetailView">
       <Items>
         <ActionContainerViewItem Id="RecordNavigation" ActionContainer="RecordsNavigation" Caption="RecordNavigation" IsNewNode="True" />
