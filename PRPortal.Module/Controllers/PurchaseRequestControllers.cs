@@ -117,6 +117,21 @@ namespace PRPortal.Module.Controllers
                     this.NewItem.Active.SetItemValue("Enabled", false);
                 }
             }
+            if (View.Id == "PurchaseRequests_DetailView_Procurement")
+            {
+                if (((DetailView)View).ViewEditMode == ViewEditMode.View)
+                {
+                    this.SubmitPR.Active.SetItemValue("Enabled", true);
+                    this.CancelPR.Active.SetItemValue("Enabled", true);
+                    this.AddItem.Active.SetItemValue("Enabled", false);
+                }
+                else
+                {
+                    this.SubmitPR.Active.SetItemValue("Enabled", false);
+                    this.CancelPR.Active.SetItemValue("Enabled", false);
+                    this.AddItem.Active.SetItemValue("Enabled", true);
+                }
+            }
             else
             {
                 this.SubmitPR.Active.SetItemValue("Enabled", false);
@@ -600,8 +615,18 @@ namespace PRPortal.Module.Controllers
 
                         IObjectSpace tos = Application.CreateObjectSpace();
                         PurchaseRequests trx = tos.FindObject<PurchaseRequests>(new BinaryOperator("Oid", pr.Oid));
-                        genCon.openNewView(tos, trx, ViewEditMode.View);
+
+                        ShowViewParameters svp = new ShowViewParameters();
+                        DetailView dv = Application.CreateDetailView(tos, "PurchaseRequests_DetailView_Approved", true, trx);
+                        dv.ViewEditMode = ViewEditMode.View;
+                        dv.IsRoot = true;
+                        svp.CreatedView = dv;
+
+                        Application.ShowViewStrategy.ShowView(svp, new ShowViewSource(null, null));
+
                         genCon.showMsg("Successful", "Approve Done.", InformationType.Success);
+
+
                     }
                 }
             }
@@ -652,6 +677,7 @@ namespace PRPortal.Module.Controllers
                 PODetails.ItemCode = PODetails.Session.GetObjectByKey<vwItemMasters>(dtl.ItemCode);
                 PODetails.Quantity = dtl.OrderQty;
                 PODetails.UnitPrice = dtl.UnitPrice;
+                PODetails.Remarks = dtl.Remarks;
                 PR.PurchaseRequestDetails.Add(PODetails);
             }
 
@@ -762,6 +788,7 @@ namespace PRPortal.Module.Controllers
             addnewitem.ItemName = currentobject.ItemCode.ItemName;
             addnewitem.OrderQty = currentobject.OrderQty;
             addnewitem.UnitPrice = currentobject.UnitPrice;
+            addnewitem.Remarks = currentobject.Remarks;
 
             currentobject.Results.Add(addnewitem);
 

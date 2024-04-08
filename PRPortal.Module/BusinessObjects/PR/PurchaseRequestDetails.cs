@@ -203,6 +203,19 @@ namespace PRPortal.Module.BusinessObjects.PR
             }
         }
 
+        private string _Remarks;
+        [XafDisplayName("Remarks")]
+        [Size(254)]
+        [Index(15), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(false)]
+        public string Remarks
+        {
+            get { return _Remarks; }
+            set
+            {
+                SetPropertyValue("Remarks", ref _Remarks, value);
+            }
+        }
+
         private decimal _Total;
         [ImmediatePostData]
         [DbType("numeric(18,6)")]

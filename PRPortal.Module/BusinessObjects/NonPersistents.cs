@@ -114,6 +114,10 @@ namespace PRPortal.Module.BusinessObjects
         [Index(10), VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
         public string DocNum { get; set; }
 
+        [XafDisplayName("Remarks")]
+        [Index(13), VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
+        public string Remarks { get; set; }
+
         //// For PK
         //[XafDisplayName("Field")]
         //[Index(12), VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
@@ -167,5 +171,10 @@ namespace PRPortal.Module.BusinessObjects
         [Index(3), VisibleInListView(false), VisibleInDetailView(true), VisibleInLookupListView(true)]
         [Appearance("UnitPrice", Enabled = false)]
         public decimal UnitPrice { get; set; }
+
+        [XafDisplayName("Remarks")]
+        [Index(4), VisibleInDetailView(false), VisibleInListView(true), VisibleInLookupListView(true)]
+        [Appearance("Remarks", Enabled = false)]
+        public string Remarks { get; set; }
     }
 }

@@ -22,8 +22,10 @@ namespace PRPortal.Module.BusinessObjects.PR
     [NavigationItem("Purchase Request")]
     [Appearance("HideNew", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_ListView_PendApp")]
     [Appearance("HideNew1", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_ListView_Approved")]
-    [Appearance("HideNew2", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_PendApp")]
-    [Appearance("HideNew3", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_Approved")]
+    [Appearance("HideNew2", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_ListView_Procurement")]
+    [Appearance("HideNew3", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_PendApp")]
+    [Appearance("HideNew4", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_Approved")]
+    [Appearance("HideNew5", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_Procurement")]
 
     [Appearance("HideEdit", AppearanceItemType.Action, "True", TargetItems = "SwitchToEditMode; Edit", Criteria = "not (Status in (0, 7))", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
     [Appearance("HideEdit1", AppearanceItemType.Action, "True", TargetItems = "SwitchToEditMode; Edit", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_ListView_PendApp")]
@@ -33,10 +35,14 @@ namespace PRPortal.Module.BusinessObjects.PR
 
     [Appearance("HideSubmit", AppearanceItemType.Action, "True", TargetItems = "SubmitPR", Criteria = "not (Status in (0, 7))", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
     [Appearance("HideCancel", AppearanceItemType.Action, "True", TargetItems = "CancelPR", Criteria = "not (Status in (0, 7))", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
+    [Appearance("HideSubmit1", AppearanceItemType.Action, "True", TargetItems = "SubmitPR", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_Approved")]
+    [Appearance("HideCancel1", AppearanceItemType.Action, "True", TargetItems = "CancelPR", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_Approved")]
+    [Appearance("HideSubmit2", AppearanceItemType.Action, "True", TargetItems = "SubmitPR", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_PendApp")]
+    [Appearance("HideCancel2", AppearanceItemType.Action, "True", TargetItems = "CancelPR", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_PendApp")]
 
     [Appearance("HideDelete", AppearanceItemType.Action, "True", TargetItems = "Delete", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
 
-     [Appearance("HideAddNew", AppearanceItemType.Action, "True", TargetItems = "AddItem", Criteria = "Remarks = null or EventorPurpose = null or Requester = null", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
+     [Appearance("HideAddNew", AppearanceItemType.Action, "True", TargetItems = "AddItem", Criteria = "Remarks = null or EventorPurpose = null or Requester = null or ReqEmail = null or PIC = null", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
 
     public class PurchaseRequests : XPObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
@@ -182,13 +188,40 @@ namespace PRPortal.Module.BusinessObjects.PR
             }
         }
 
+        private string _PIC;
+        [XafDisplayName("PIC")]
+        [RuleRequiredField(DefaultContexts.Save)]
+        [ImmediatePostData]
+        [Index(5), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(false)]
+        public string PIC
+        {
+            get { return _PIC; }
+            set
+            {
+                SetPropertyValue("PIC", ref _PIC, value);
+            }
+        }
+
+        private string _ReqEmail;
+        [XafDisplayName("Requester Email")]
+        [RuleRequiredField(DefaultContexts.Save)]
+        [ImmediatePostData]
+        [Index(6), VisibleInDetailView(true), VisibleInListView(false), VisibleInLookupListView(false)]
+        public string ReqEmail
+        {
+            get { return _ReqEmail; }
+            set
+            {
+                SetPropertyValue("ReqEmail", ref _ReqEmail, value);
+            }
+        }
+
         private vwCostCentre _CostCentre;
         [NoForeignKey]
         [XafDisplayName("Cost Centre")]
         [Appearance("CostCentre", Enabled = false)]
-        [LookupEditorMode(LookupEditorMode.AllItems)]
         //[RuleRequiredField(DefaultContexts.Save)]
-        [Index(6), VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
+        [Index(7), VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
         public vwCostCentre CostCentre
         {
             get { return _CostCentre; }
