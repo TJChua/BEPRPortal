@@ -34,6 +34,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LoginScreen", "LoginScreen\
 		SlnRelativePath = "LoginScreen\"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integration", "Integration\Integration.csproj", "{49378523-2FB9-4EB3-BD2E-C1C32ABD35CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,12 @@ Global
 		{D6D8DCA6-B6CC-42B8-82E7-39D04A482EAB}.EasyTest|Any CPU.Build.0 = Debug|Any CPU
 		{D6D8DCA6-B6CC-42B8-82E7-39D04A482EAB}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{D6D8DCA6-B6CC-42B8-82E7-39D04A482EAB}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{49378523-2FB9-4EB3-BD2E-C1C32ABD35CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49378523-2FB9-4EB3-BD2E-C1C32ABD35CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49378523-2FB9-4EB3-BD2E-C1C32ABD35CF}.EasyTest|Any CPU.ActiveCfg = Release|Any CPU
+		{49378523-2FB9-4EB3-BD2E-C1C32ABD35CF}.EasyTest|Any CPU.Build.0 = Release|Any CPU
+		{49378523-2FB9-4EB3-BD2E-C1C32ABD35CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49378523-2FB9-4EB3-BD2E-C1C32ABD35CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

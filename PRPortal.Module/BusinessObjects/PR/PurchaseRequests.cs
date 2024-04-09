@@ -311,6 +311,19 @@ namespace PRPortal.Module.BusinessObjects.PR
             }
         }
 
+        private string _SAPDocNum;
+        [XafDisplayName("SAP Doc Num")]
+        [Appearance("SAPDocNum", Enabled = false)]
+        [Index(25), VisibleInDetailView(false), VisibleInListView(true), VisibleInLookupListView(false)]
+        public string SAPDocNum
+        {
+            get { return _SAPDocNum; }
+            set
+            {
+                SetPropertyValue("SAPDocNum", ref _SAPDocNum, value);
+            }
+        }
+
         private string _NextApprover;
         [XafDisplayName("Next Approver")]
         [Index(82), VisibleInListView(false), VisibleInDetailView(false), VisibleInLookupListView(false)]
@@ -334,6 +347,18 @@ namespace PRPortal.Module.BusinessObjects.PR
             set
             {
                 SetPropertyValue("WhoApprove", ref _WhoApprove, value);
+            }
+        }
+
+        private bool _Sap;
+        [XafDisplayName("Sap")]
+        [Index(88), VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
+        public bool Sap
+        {
+            get { return _Sap; }
+            set
+            {
+                SetPropertyValue("Sap", ref _Sap, value);
             }
         }
 
