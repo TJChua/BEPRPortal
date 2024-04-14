@@ -5,7 +5,10 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Web;
 using System.Web.UI;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Actions;
@@ -15,6 +18,7 @@ using DevExpress.ExpressApp.Model.NodeGenerators;
 using DevExpress.ExpressApp.SystemModule;
 using DevExpress.ExpressApp.Templates;
 using DevExpress.ExpressApp.Utils;
+using DevExpress.ExpressApp.Web;
 using DevExpress.ExpressApp.Web.Editors.ASPx;
 using DevExpress.ExpressApp.Xpo;
 using DevExpress.Persistent.Base;
@@ -50,6 +54,7 @@ namespace PRPortal.Module.Controllers
             this.EscalateUser.Active.SetItemValue("Enabled", false);
             this.SaveDetails.Active.SetItemValue("Enabled", false);
             this.NewItem.Active.SetItemValue("Enabled", false);
+            this.PrintPRLayout.Active.SetItemValue("Enabled", false);
 
             //// For PK
             //if (View.Id == "InputItem_DetailView")
@@ -117,19 +122,40 @@ namespace PRPortal.Module.Controllers
                     this.NewItem.Active.SetItemValue("Enabled", false);
                 }
             }
-            if (View.Id == "PurchaseRequests_DetailView_Procurement")
+            else if (View.Id == "PurchaseRequests_DetailView_Procurement")
             {
                 if (((DetailView)View).ViewEditMode == ViewEditMode.View)
                 {
                     this.SubmitPR.Active.SetItemValue("Enabled", true);
                     this.CancelPR.Active.SetItemValue("Enabled", true);
                     this.AddItem.Active.SetItemValue("Enabled", false);
+                    this.PrintPRLayout.Active.SetItemValue("Enabled", true);
                 }
                 else
                 {
                     this.SubmitPR.Active.SetItemValue("Enabled", false);
                     this.CancelPR.Active.SetItemValue("Enabled", false);
                     this.AddItem.Active.SetItemValue("Enabled", true);
+                    this.PrintPRLayout.Active.SetItemValue("Enabled", false);
+                }
+            }
+            else if (View.Id == "PurchaseRequests_ListView_Procurement")
+            {
+                this.PrintPRLayout.Active.SetItemValue("Enabled", true);
+            }
+            else if (View.Id == "PurchaseRequests_ListView_Approved")
+            {
+                this.PrintPRLayout.Active.SetItemValue("Enabled", true);
+            }
+            else if (View.Id == "PurchaseRequests_DetailView_Approved")
+            {
+                if (((DetailView)View).ViewEditMode == ViewEditMode.View)
+                {
+                    this.PrintPRLayout.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.PrintPRLayout.Active.SetItemValue("Enabled", false);
                 }
             }
             else
@@ -877,6 +903,83 @@ namespace PRPortal.Module.Controllers
             var newObject = objectSpaceForNewObject.CreateObject<PurchaseRequestDetails>();
             e.ShowViewParameters.CreatedView = Application.CreateDetailView(objectSpaceForNewObject, newObject, View);
             e.ShowViewParameters.TargetWindow = TargetWindow.Current;
+        }
+
+        private void PrintPRLayout_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+            if (e.SelectedObjects.Count <= 0)
+            {
+                genCon.showMsg("Fail", "Please select document to print.", InformationType.Error);
+                return;
+            }
+
+            if (e.SelectedObjects.Count > 1)
+            {
+                genCon.showMsg("Fail", "Please select one document to print.", InformationType.Error);
+                return;
+            }
+
+            foreach (PurchaseRequests pr in View.SelectedObjects)
+            {
+                string filename;
+                string url = null;
+                string script = null;
+                string strServer;
+                string strDatabase;
+                string strUserID;
+                string strPwd;
+
+                SqlConnection conn = new SqlConnection(genCon.getConnectionString());
+                //PurchaseRequests pr = View.CurrentObject as PurchaseRequests;
+
+                try
+                {
+                    ReportDocument doc = new ReportDocument();
+                    doc.Load(HttpContext.Current.Server.MapPath("~\\Reports\\[BE] Purchase Request.rpt"));
+                    strServer = ConfigurationManager.AppSettings.Get("SQLserver").ToString();
+                    strDatabase = conn.Database;
+                    strUserID = ConfigurationManager.AppSettings.Get("SQLID").ToString();
+                    strPwd = ConfigurationManager.AppSettings.Get("SQLPass").ToString();
+                    doc.DataSourceConnections[0].SetConnection(strServer, strDatabase, strUserID, strPwd);
+                    doc.Refresh();
+
+                    ParameterFieldDefinitions crParameterdef;
+                    crParameterdef = doc.DataDefinition.ParameterFields;
+
+                    foreach (ParameterFieldDefinition param in crParameterdef)
+                    {
+                        if (param.Name.Equals("Id"))
+                        {
+                            doc.SetParameterValue("Id", pr.Oid);
+                        }
+
+                        if (param.Name.Equals("approvolrDate"))
+                        {
+                            doc.SetParameterValue("approvolrDate", pr.PurchaseRequestAppStatus.Count <= 0 ? DateTime.Now.Date.ToString("dd-MM-yyy") : pr.PurchaseRequestAppStatus.Max().CreateDate.Value.ToString("dd-MM-yyy"));
+                        }
+                    }
+
+                    filename = ConfigurationManager.AppSettings.Get("ReportPath").ToString() + strServer
+                                  + "_" + pr.DocNum + "_"
+                                  + DateTime.Parse(DateTime.Today.Date.ToString()).ToString("ddMMyyyy") + ".pdf";
+
+                    doc.ExportToDisk(ExportFormatType.PortableDocFormat, filename);
+                    doc.Close();
+                    doc.Dispose();
+
+                    url = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority +
+                        ConfigurationManager.AppSettings.Get("PrintPath").ToString() + strServer
+                        + "_" + pr.DocNum + "_"
+                        + DateTime.Parse(DateTime.Today.Date.ToString()).ToString("ddMMyyyy") + ".pdf";
+                    script = "window.open('" + url + "');";
+
+                    WebWindow.CurrentRequestWindow.RegisterStartupScript("DownloadFile", script);
+                }
+                catch (Exception ex)
+                {
+                    genCon.showMsg("Fail", ex.Message, InformationType.Error);
+                }
+            }
         }
     }
 }

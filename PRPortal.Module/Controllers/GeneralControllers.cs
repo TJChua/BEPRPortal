@@ -15,6 +15,7 @@ using DevExpress.ExpressApp.Templates;
 using DevExpress.ExpressApp.Utils;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.Validation;
+using DevExpress.Xpo.DB.Helpers;
 using PRPortal.Module.BusinessObjects;
 using PRPortal.Module.BusinessObjects.PR;
 using PRPortal.Module.BusinessObjects.Setup;
@@ -156,6 +157,17 @@ namespace PRPortal.Module.Controllers
 
 
             return true;
+        }
+
+        public string getConnectionString()
+        {
+            string connectionString = "";
+
+            ConnectionStringParser helper = new ConnectionStringParser(Application.ConnectionString);
+            helper.RemovePartByName("xpodatastorepool");
+            connectionString = string.Format(helper.GetConnectionString());
+
+            return connectionString;
         }
     }
 }

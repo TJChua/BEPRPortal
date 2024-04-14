@@ -39,6 +39,7 @@
             this.EscalateUser = new DevExpress.ExpressApp.Actions.PopupWindowShowAction(this.components);
             this.SaveDetails = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             this.NewItem = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
+            this.PrintPRLayout = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             // 
             // SubmitPR
             // 
@@ -145,6 +146,15 @@
             this.NewItem.ToolTip = null;
             this.NewItem.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.NewItem_Execute);
             // 
+            // PrintPRLayout
+            // 
+            this.PrintPRLayout.Caption = "Print";
+            this.PrintPRLayout.Category = "ObjectsCreation";
+            this.PrintPRLayout.ConfirmationMessage = null;
+            this.PrintPRLayout.Id = "PrintPRLayout";
+            this.PrintPRLayout.ToolTip = null;
+            this.PrintPRLayout.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.PrintPRLayout_Execute);
+            // 
             // PurchaseRequestControllers
             // 
             this.Actions.Add(this.SubmitPR);
@@ -157,6 +167,7 @@
             this.Actions.Add(this.EscalateUser);
             this.Actions.Add(this.SaveDetails);
             this.Actions.Add(this.NewItem);
+            this.Actions.Add(this.PrintPRLayout);
 
         }
 
@@ -172,5 +183,6 @@
         private DevExpress.ExpressApp.Actions.PopupWindowShowAction EscalateUser;
         private DevExpress.ExpressApp.Actions.SimpleAction SaveDetails;
         private DevExpress.ExpressApp.Actions.SimpleAction NewItem;
+        private DevExpress.ExpressApp.Actions.SimpleAction PrintPRLayout;
     }
 }

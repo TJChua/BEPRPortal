@@ -53,7 +53,7 @@ namespace Integration
 
                     #region PR 
                     IList<PurchaseRequests> pr = ListObjectSpace.GetObjects<PurchaseRequests>
-                    (CriteriaOperator.Parse("Sap = ?", 0));
+                    (CriteriaOperator.Parse("Sap = ? and ((Status = ? and AppStatus = ?) or (Status = ? and AppStatus = ?))", 0, 1, 0, 1, 1));
 
                     foreach (PurchaseRequests dtlpr in pr)
                     {
@@ -196,6 +196,7 @@ namespace Integration
                     oDoc.RequesterName = oTargetDoc.Requester;
                     oDoc.DocDate = oTargetDoc.DocDate;
                     oDoc.DocDueDate = oTargetDoc.DeliveryDate;
+                    oDoc.RequriedDate = oTargetDoc.DocDate;
                     oDoc.Comments = oTargetDoc.Remarks;
                     oDoc.UserFields.Fields.Item("U_PortalDocNum").Value = oTargetDoc.DocNum;
 
@@ -222,7 +223,7 @@ namespace Integration
                         {
                             oDoc.Lines.CostingCode = oTargetDoc.Department.DepartmentCode;
                         }
-                        oDoc.Lines.UserFields.Fields.Item("U_PortalItemLine").Value = dtl.Oid;
+                        oDoc.Lines.UserFields.Fields.Item("U_PortalItemLine").Value = dtl.Oid.ToString();
 
                         oDoc.Lines.ItemCode = dtl.ItemCode.ItemCode;
                         oDoc.Lines.ItemDetails = dtl.ItemDesc;
@@ -282,6 +283,8 @@ namespace Integration
                                 sap.oCom.EndTransaction(BoWfTransOpt.wf_RollBack);
                             }
 
+                            WriteLog("[Error]", "Message: POST PR Att Failed - DocNum : " + oTargetDoc.DocNum + " (" + temp + ")");
+
                             return -1;
                         }
                         oDoc.AttachmentEntry = iAttEntry;
@@ -296,6 +299,8 @@ namespace Integration
                             sap.oCom.EndTransaction(BoWfTransOpt.wf_RollBack);
                         }
 
+                        WriteLog("[Error]", "Message: POST PR Failed - DocNum : " + oTargetDoc.DocNum + " (" + temp + ")");
+
                         return -1;
                     }
                     return 1;
@@ -304,6 +309,8 @@ namespace Integration
             }
             catch (Exception ex)
             {
+                WriteLog("[Error]", "Message: POST PR Failed - DocNum : " + oTargetDoc.DocNum + " (" + ex.Message + ")");
+
                 return -1;
             }
         }
