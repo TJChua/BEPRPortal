@@ -35,6 +35,12 @@
           <Item Id="Purchase Request - Procurement" Caption="Purchase Request - Procurement" ViewId="PurchaseRequests_ListView_Procurement" Index="3" IsNewNode="True" />
         </Items>
       </Item>
+      <Item Id="Reports">
+        <Items>
+          <Item Id="InquiryPO_ListView" Visible="False" />
+          <Item Id="ReportsV2" Visible="False" />
+        </Items>
+      </Item>
       <Item Id="SAP">
         <Items>
           <Item Id="vwCostCentre_ListView" Visible="False" />

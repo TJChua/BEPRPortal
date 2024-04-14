@@ -113,18 +113,18 @@ namespace PRPortal.Module.BusinessObjects.Inquiry_View
             get; set;
         }
 
-        [XafDisplayName("Convert to PO")]
-        [Appearance("ConvertToPO", Enabled = false)]
+        [XafDisplayName("Convert to PR")]
+        [Appearance("ConvertToPR", Enabled = false)]
         [Index(23)]
-        public string ConvertToPO
+        public string ConvertToPR
         {
             get; set;
         }
 
-        [XafDisplayName("PO Number")]
-        [Appearance("PONumber", Enabled = false)]
+        [XafDisplayName("PR Number")]
+        [Appearance("PRNumber", Enabled = false)]
         [Index(25)]
-        public string PONumber
+        public string PRNumber
         {
             get; set;
         }
