@@ -73,13 +73,13 @@ namespace PRPortal.Module.Controllers
                 }
             }
 
-            if (View.ObjectTypeInfo.Type == typeof(PurchaseRequests))
-            {
-                if (View.Id == "PurchaseRequests_ListView_Procurement")
-                {
-                    ((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("(Status in (?, ?)) and not IsNullOrEmpty(PIC)", 0, 7);
-                }
-            }
+            //if (View.ObjectTypeInfo.Type == typeof(PurchaseRequests))
+            //{
+            //    if (View.Id == "PurchaseRequests_ListView_Procurement")
+            //    {
+            //        ((ListView)View).CollectionSource.Criteria["Filter1"] = CriteriaOperator.Parse("(Status in (?, ?)) and not IsNullOrEmpty(PIC)", 0, 7);
+            //    }
+            //}
         }
         protected override void OnViewControlsCreated()
         {

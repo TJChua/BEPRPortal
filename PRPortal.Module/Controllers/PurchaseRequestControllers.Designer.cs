@@ -40,6 +40,7 @@
             this.SaveDetails = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             this.NewItem = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             this.PrintPRLayout = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
+            this.SubmitPRReq = new DevExpress.ExpressApp.Actions.PopupWindowShowAction(this.components);
             // 
             // SubmitPR
             // 
@@ -155,6 +156,18 @@
             this.PrintPRLayout.ToolTip = null;
             this.PrintPRLayout.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.PrintPRLayout_Execute);
             // 
+            // SubmitPRReq
+            // 
+            this.SubmitPRReq.AcceptButtonCaption = null;
+            this.SubmitPRReq.CancelButtonCaption = null;
+            this.SubmitPRReq.Caption = "Submit";
+            this.SubmitPRReq.Category = "ObjectsCreation";
+            this.SubmitPRReq.ConfirmationMessage = null;
+            this.SubmitPRReq.Id = "SubmitPRReq";
+            this.SubmitPRReq.ToolTip = null;
+            this.SubmitPRReq.CustomizePopupWindowParams += new DevExpress.ExpressApp.Actions.CustomizePopupWindowParamsEventHandler(this.SubmitPRReq_CustomizePopupWindowParams);
+            this.SubmitPRReq.Execute += new DevExpress.ExpressApp.Actions.PopupWindowShowActionExecuteEventHandler(this.SubmitPRReq_Execute);
+            // 
             // PurchaseRequestControllers
             // 
             this.Actions.Add(this.SubmitPR);
@@ -168,6 +181,7 @@
             this.Actions.Add(this.SaveDetails);
             this.Actions.Add(this.NewItem);
             this.Actions.Add(this.PrintPRLayout);
+            this.Actions.Add(this.SubmitPRReq);
 
         }
 
@@ -184,5 +198,6 @@
         private DevExpress.ExpressApp.Actions.SimpleAction SaveDetails;
         private DevExpress.ExpressApp.Actions.SimpleAction NewItem;
         private DevExpress.ExpressApp.Actions.SimpleAction PrintPRLayout;
+        private DevExpress.ExpressApp.Actions.PopupWindowShowAction SubmitPRReq;
     }
 }

@@ -22,23 +22,26 @@ namespace PRPortal.Module.BusinessObjects.PR
     [NavigationItem("Purchase Request")]
     [Appearance("HideNew", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_ListView_PendApp")]
     [Appearance("HideNew1", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_ListView_Approved")]
-    [Appearance("HideNew2", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_ListView_Procurement")]
+    //[Appearance("HideNew2", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_ListView_Procurement")]
     [Appearance("HideNew3", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_PendApp")]
     [Appearance("HideNew4", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_Approved")]
-    [Appearance("HideNew5", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_Procurement")]
+    //[Appearance("HideNew5", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_Procurement")]
 
-    [Appearance("HideEdit", AppearanceItemType.Action, "True", TargetItems = "SwitchToEditMode; Edit", Criteria = "not (Status in (0, 7))", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
+    [Appearance("HideEdit", AppearanceItemType.Action, "True", TargetItems = "SwitchToEditMode; Edit", Criteria = "not (Status in (0, 7))", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView")]
     [Appearance("HideEdit1", AppearanceItemType.Action, "True", TargetItems = "SwitchToEditMode; Edit", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_ListView_PendApp")]
     [Appearance("HideEdit2", AppearanceItemType.Action, "True", TargetItems = "SwitchToEditMode; Edit", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_ListView_Approved")]
     [Appearance("HideEdit3", AppearanceItemType.Action, "True", TargetItems = "SwitchToEditMode; Edit", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_PendApp")]
     [Appearance("HideEdit4", AppearanceItemType.Action, "True", TargetItems = "SwitchToEditMode; Edit", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_Approved")]
+    [Appearance("HideEdit5", AppearanceItemType.Action, "True", TargetItems = "SwitchToEditMode; Edit", Criteria = "not (Status in (0, 8))", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_Procurement")]
 
-    [Appearance("HideSubmit", AppearanceItemType.Action, "True", TargetItems = "SubmitPR", Criteria = "not (Status in (0, 7))", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
-    [Appearance("HideCancel", AppearanceItemType.Action, "True", TargetItems = "CancelPR", Criteria = "not (Status in (0, 7))", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
+    [Appearance("HideSubmit", AppearanceItemType.Action, "True", TargetItems = "SubmitPRReq", Criteria = "not (Status in (0, 7))", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView")]
+    [Appearance("HideCancel", AppearanceItemType.Action, "True", TargetItems = "CancelPR", Criteria = "not (Status in (0, 7))", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView")]
     [Appearance("HideSubmit1", AppearanceItemType.Action, "True", TargetItems = "SubmitPR", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_Approved")]
     [Appearance("HideCancel1", AppearanceItemType.Action, "True", TargetItems = "CancelPR", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_Approved")]
     [Appearance("HideSubmit2", AppearanceItemType.Action, "True", TargetItems = "SubmitPR", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_PendApp")]
     [Appearance("HideCancel2", AppearanceItemType.Action, "True", TargetItems = "CancelPR", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_PendApp")]
+    [Appearance("HideSubmit3", AppearanceItemType.Action, "True", TargetItems = "SubmitPR", Criteria = "not (Status in (0, 8))", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_Procurement")]
+    [Appearance("HideCancel3", AppearanceItemType.Action, "True", TargetItems = "CancelPR", Criteria = "not (Status in (0, 8))", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "PurchaseRequests_DetailView_Procurement")]
 
     [Appearance("HideDelete", AppearanceItemType.Action, "True", TargetItems = "Delete", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
 
@@ -189,7 +192,7 @@ namespace PRPortal.Module.BusinessObjects.PR
         }
 
         private string _PIC;
-        [XafDisplayName("PIC")]
+        [XafDisplayName("Procurement PIC")]
         [RuleRequiredField(DefaultContexts.Save)]
         [ImmediatePostData]
         [Index(5), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(false)]

@@ -55,6 +55,7 @@ namespace PRPortal.Module.Controllers
             this.SaveDetails.Active.SetItemValue("Enabled", false);
             this.NewItem.Active.SetItemValue("Enabled", false);
             this.PrintPRLayout.Active.SetItemValue("Enabled", false);
+            this.SubmitPRReq.Active.SetItemValue("Enabled", false);
 
             //// For PK
             //if (View.Id == "InputItem_DetailView")
@@ -73,14 +74,16 @@ namespace PRPortal.Module.Controllers
             {
                 if (((DetailView)View).ViewEditMode == ViewEditMode.View)
                 {
-                    this.SubmitPR.Active.SetItemValue("Enabled", true);
+                    //this.SubmitPR.Active.SetItemValue("Enabled", true);
+                    this.SubmitPRReq.Active.SetItemValue("Enabled", true);
                     this.CancelPR.Active.SetItemValue("Enabled", true);
                     this.DuplicatePR.Active.SetItemValue("Enabled", true);
                     this.AddItem.Active.SetItemValue("Enabled", false);
                 }
                 else
                 {
-                    this.SubmitPR.Active.SetItemValue("Enabled", false);
+                    //this.SubmitPR.Active.SetItemValue("Enabled", false);
+                    this.SubmitPRReq.Active.SetItemValue("Enabled", false);
                     this.CancelPR.Active.SetItemValue("Enabled", false);
                     this.DuplicatePR.Active.SetItemValue("Enabled", false);
                     this.AddItem.Active.SetItemValue("Enabled", true);
@@ -128,6 +131,7 @@ namespace PRPortal.Module.Controllers
                 {
                     this.SubmitPR.Active.SetItemValue("Enabled", true);
                     this.CancelPR.Active.SetItemValue("Enabled", true);
+                    this.DuplicatePR.Active.SetItemValue("Enabled", true);
                     this.AddItem.Active.SetItemValue("Enabled", false);
                     this.PrintPRLayout.Active.SetItemValue("Enabled", true);
                 }
@@ -135,6 +139,7 @@ namespace PRPortal.Module.Controllers
                 {
                     this.SubmitPR.Active.SetItemValue("Enabled", false);
                     this.CancelPR.Active.SetItemValue("Enabled", false);
+                    this.DuplicatePR.Active.SetItemValue("Enabled", false);
                     this.AddItem.Active.SetItemValue("Enabled", true);
                     this.PrintPRLayout.Active.SetItemValue("Enabled", false);
                 }
@@ -167,6 +172,7 @@ namespace PRPortal.Module.Controllers
                 this.SearchItem.Active.SetItemValue("Enabled", false);
                 this.SaveDetails.Active.SetItemValue("Enabled", false);
                 this.NewItem.Active.SetItemValue("Enabled", false);
+                this.SubmitPRReq.Active.SetItemValue("Enabled", false);
             }
         }
         protected override void OnDeactivated()
@@ -980,6 +986,40 @@ namespace PRPortal.Module.Controllers
                     genCon.showMsg("Fail", ex.Message, InformationType.Error);
                 }
             }
+        }
+
+        private void SubmitPRReq_Execute(object sender, PopupWindowShowActionExecuteEventArgs e)
+        {
+            PurchaseRequests selectedObject = (PurchaseRequests)e.CurrentObject;
+            StringParameters p = (StringParameters)e.PopupWindow.View.CurrentObject;
+            if (p.IsErr) return;
+
+            selectedObject.Status = DocStatus.PendingPIC;
+            PurchaseRequestDocTrail ds = ObjectSpace.CreateObject<PurchaseRequestDocTrail>();
+            ds.DocStatus = DocStatus.PendingPIC;
+            ds.DocRemarks = p.ParamString;
+            selectedObject.PurchaseRequestDocTrail.Add(ds);
+
+            ObjectSpace.CommitChanges();
+            ObjectSpace.Refresh();
+
+            IObjectSpace pos = Application.CreateObjectSpace();
+            PurchaseRequests ptrx = pos.FindObject<PurchaseRequests>(new BinaryOperator("Oid", selectedObject.Oid));
+            genCon.openNewView(pos, ptrx, ViewEditMode.View);
+            genCon.showMsg("Successful", "Submit Done.", InformationType.Success);
+        }
+
+        private void SubmitPRReq_CustomizePopupWindowParams(object sender, CustomizePopupWindowParamsEventArgs e)
+        {
+            var os = Application.CreateObjectSpace(typeof(StringParameters));
+            StringParameters message = os.CreateObject<StringParameters>();
+
+            DetailView dv = Application.CreateDetailView(os, message);
+            dv.ViewEditMode = DevExpress.ExpressApp.Editors.ViewEditMode.Edit;
+            ((StringParameters)dv.CurrentObject).IsErr = false;
+            ((StringParameters)dv.CurrentObject).ActionMessage = "Press OK to CONFIRM the action and SAVE, else press Cancel.";
+
+            e.View = dv;
         }
     }
 }
