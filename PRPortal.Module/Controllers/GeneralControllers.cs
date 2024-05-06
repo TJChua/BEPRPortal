@@ -142,6 +142,16 @@ namespace PRPortal.Module.Controllers
                 snumber.CurrectDocNum = snumber.NextDocNum;
                 snumber.NextDocNum = snumber.NextDocNum + 1;
 
+                PurchaseRequests pr = os.FindObject<PurchaseRequests>(CriteriaOperator.Parse("DocNum = ?", DocNum));
+
+                if (pr != null)
+                {
+                    DocNum = snumber.BoName + "-" + snumber.NextDocNum;
+
+                    snumber.CurrectDocNum = snumber.NextDocNum;
+                    snumber.NextDocNum = snumber.NextDocNum + 1;
+                }
+
                 os.CommitChanges();
             }
             catch (Exception)

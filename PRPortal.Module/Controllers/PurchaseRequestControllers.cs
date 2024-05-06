@@ -934,9 +934,33 @@ namespace PRPortal.Module.Controllers
                 string strDatabase;
                 string strUserID;
                 string strPwd;
+                int app1 = 0;
+                int app2 = 0;
+                int app3 = 0;
+                int cnt = 1;
 
                 SqlConnection conn = new SqlConnection(genCon.getConnectionString());
                 //PurchaseRequests pr = View.CurrentObject as PurchaseRequests;
+
+                foreach (PurchaseRequestAppStatus dtlapp in pr.PurchaseRequestAppStatus)
+                {
+                    if (app1 == 0 && cnt == 1)
+                    {
+                        app1 = dtlapp.Oid;
+                    }
+
+                    if (app2 == 0 && cnt == 2)
+                    {
+                        app2 = dtlapp.Oid;
+                    }
+
+                    if (app3 == 0 && cnt == 3)
+                    {
+                        app3 = dtlapp.Oid;
+                    }
+
+                    cnt++;
+                }
 
                 try
                 {
@@ -959,9 +983,24 @@ namespace PRPortal.Module.Controllers
                             doc.SetParameterValue("Id", pr.Oid);
                         }
 
-                        if (param.Name.Equals("approvolrDate"))
+                        if (param.Name.Equals("requester"))
                         {
-                            doc.SetParameterValue("approvolrDate", pr.PurchaseRequestAppStatus.Count <= 0 ? DateTime.Now.Date.ToString("dd-MM-yyy") : pr.PurchaseRequestAppStatus.Max().CreateDate.Value.ToString("dd-MM-yyy"));
+                            doc.SetParameterValue("requester", pr.Requester);
+                        }
+
+                        if (param.Name.Equals("approval1"))
+                        {
+                            doc.SetParameterValue("approval1", app1);
+                        }
+
+                        if (param.Name.Equals("approval2"))
+                        {
+                            doc.SetParameterValue("approval2", app2);
+                        }
+
+                        if (param.Name.Equals("approval3"))
+                        {
+                            doc.SetParameterValue("approval3", app3);
                         }
                     }
 
