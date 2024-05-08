@@ -226,7 +226,8 @@ namespace Integration
                         oDoc.Lines.UserFields.Fields.Item("U_PortalItemLine").Value = dtl.Oid.ToString();
 
                         oDoc.Lines.ItemCode = dtl.ItemCode.ItemCode;
-                        oDoc.Lines.ItemDetails = dtl.ItemDesc;
+                        oDoc.Lines.ItemDescription = dtl.ItemDesc;
+                        oDoc.Lines.ItemDetails = dtl.Remarks;
                         oDoc.Lines.Quantity = (double)dtl.Quantity;
                         oDoc.Lines.LineTotal = (double)dtl.Total;
                     }
