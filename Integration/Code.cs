@@ -196,7 +196,7 @@ namespace Integration
                     oDoc.RequesterName = oTargetDoc.Requester;
                     oDoc.DocDate = oTargetDoc.DocDate;
                     oDoc.DocDueDate = oTargetDoc.DeliveryDate;
-                    oDoc.RequriedDate = oTargetDoc.DocDate;
+                    oDoc.RequriedDate = oTargetDoc.DeliveryDate;
                     oDoc.Comments = oTargetDoc.Remarks;
                     oDoc.UserFields.Fields.Item("U_PortalDocNum").Value = oTargetDoc.DocNum;
 

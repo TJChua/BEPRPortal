@@ -79,6 +79,7 @@ namespace PRPortal.Module.Controllers
                     this.CancelPR.Active.SetItemValue("Enabled", true);
                     this.DuplicatePR.Active.SetItemValue("Enabled", true);
                     this.AddItem.Active.SetItemValue("Enabled", false);
+                    this.PrintPRLayout.Active.SetItemValue("Enabled", true);
                 }
                 else
                 {
@@ -87,6 +88,7 @@ namespace PRPortal.Module.Controllers
                     this.CancelPR.Active.SetItemValue("Enabled", false);
                     this.DuplicatePR.Active.SetItemValue("Enabled", false);
                     this.AddItem.Active.SetItemValue("Enabled", true);
+                    this.PrintPRLayout.Active.SetItemValue("Enabled", false);
                 }
             }
             else if (View.Id == "InputItem_DetailView")
@@ -143,6 +145,10 @@ namespace PRPortal.Module.Controllers
                     this.AddItem.Active.SetItemValue("Enabled", true);
                     this.PrintPRLayout.Active.SetItemValue("Enabled", false);
                 }
+            }
+            else if (View.Id == "PurchaseRequests_ListView")
+            {
+                this.PrintPRLayout.Active.SetItemValue("Enabled", true);
             }
             else if (View.Id == "PurchaseRequests_ListView_Procurement")
             {
