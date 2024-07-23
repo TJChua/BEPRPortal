@@ -176,6 +176,12 @@
     <Compile Include="Controllers\PurchaseRequestControllers.Designer.cs">
       <DependentUpon>PurchaseRequestControllers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\WindowControllers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\WindowControllers.Designer.cs">
+      <DependentUpon>WindowControllers.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>

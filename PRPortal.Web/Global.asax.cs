@@ -30,6 +30,8 @@ namespace PRPortal.Web {
             SecurityStrategy security = WebApplication.Instance.GetSecurityStrategy();
             security.RegisterXPOAdapterProviders();
             DevExpress.ExpressApp.Web.Templates.DefaultVerticalTemplateContentNew.ClearSizeLimit();
+            WebApplication.Instance.Settings.DefaultVerticalTemplateContentPath = "DefaultVerticalTemplateContent1.ascx";
+            DefaultVerticalTemplateContent1.ClearSizeLimit();
             WebApplication.Instance.SwitchToNewStyle();
 
             #region GeneralSettings
