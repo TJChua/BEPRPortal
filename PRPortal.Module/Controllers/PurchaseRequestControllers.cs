@@ -523,11 +523,11 @@ namespace PRPortal.Module.Controllers
 
                     //ObjectSpace.CommitChanges(); //This line persists created object(s).
                     //ObjectSpace.Refresh();
-
-                    genCon.showMsg("Info", "Total Document : " + totaldoc + " Approval Done.", InformationType.Info);
-
-                    ((DevExpress.ExpressApp.ListView)Frame.View).ObjectSpace.Refresh();
                 }
+
+                genCon.showMsg("Info", "Total Document : " + totaldoc + " Approval Done.", InformationType.Info);
+
+                ((DevExpress.ExpressApp.ListView)Frame.View).ObjectSpace.Refresh();
             }
             else if (e.SelectedObjects.Count == 1)
             {
