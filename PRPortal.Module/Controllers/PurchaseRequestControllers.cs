@@ -491,21 +491,24 @@ namespace PRPortal.Module.Controllers
                         SqlDataReader reader = cmd.ExecuteReader();
                         while (reader.Read())
                         {
-                            emailbody = "Dear Sir/Madam, " + System.Environment.NewLine + System.Environment.NewLine +
+                            if (reader.GetString(1) != "")
+                            {
+                                emailbody = "Dear Sir/Madam, " + System.Environment.NewLine + System.Environment.NewLine +
                                       reader.GetString(3) + System.Environment.NewLine + GeneralSettings.appurl + reader.GetString(2) +
                                       System.Environment.NewLine + System.Environment.NewLine +
                                       "Regards" + System.Environment.NewLine +
                                       "PR Portal";
 
-                            if (appstatus == ApprovalStatusType.Approved)
-                                emailsubject = "Purchase Request Approval";
-                            else if (appstatus == ApprovalStatusType.Rejected)
-                                emailsubject = "Purchase Request Approval Rejected";
+                                if (appstatus == ApprovalStatusType.Approved)
+                                    emailsubject = "Purchase Request Approval";
+                                else if (appstatus == ApprovalStatusType.Rejected)
+                                    emailsubject = "Purchase Request Approval Rejected";
 
-                            emailaddress = reader.GetString(1);
-                            emailuser = reader.GetGuid(0);
+                                emailaddress = reader.GetString(1);
+                                emailuser = reader.GetGuid(0);
 
-                            ToEmails.Add(emailaddress);
+                                ToEmails.Add(emailaddress);
+                            }
                         }
                         conn.Close();
 
@@ -625,21 +628,24 @@ namespace PRPortal.Module.Controllers
                         SqlDataReader reader = cmd.ExecuteReader();
                         while (reader.Read())
                         {
-                            emailbody = "Dear Sir/Madam, " + System.Environment.NewLine + System.Environment.NewLine +
+                            if (reader.GetString(1) != "")
+                            {
+                                emailbody = "Dear Sir/Madam, " + System.Environment.NewLine + System.Environment.NewLine +
                                       reader.GetString(3) + System.Environment.NewLine + GeneralSettings.appurl + reader.GetString(2) +
                                       System.Environment.NewLine + System.Environment.NewLine +
                                       "Regards" + System.Environment.NewLine +
                                       "PR Portal";
 
-                            if (appstatus == ApprovalStatusType.Approved)
-                                emailsubject = "Purchase Request Approval";
-                            else if (appstatus == ApprovalStatusType.Rejected)
-                                emailsubject = "Purchase Request Approval Rejected";
+                                if (appstatus == ApprovalStatusType.Approved)
+                                    emailsubject = "Purchase Request Approval";
+                                else if (appstatus == ApprovalStatusType.Rejected)
+                                    emailsubject = "Purchase Request Approval Rejected";
 
-                            emailaddress = reader.GetString(1);
-                            emailuser = reader.GetGuid(0);
+                                emailaddress = reader.GetString(1);
+                                emailuser = reader.GetGuid(0);
 
-                            ToEmails.Add(emailaddress);
+                                ToEmails.Add(emailaddress);
+                            }
                         }
                         conn.Close();
 
