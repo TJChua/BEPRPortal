@@ -314,6 +314,20 @@ namespace PRPortal.Module.BusinessObjects.PR
             }
         }
 
+        private string _DeliveryAddress;
+        [XafDisplayName("Delivery Address")]
+        [Size(254)]
+        [ImmediatePostData]
+        [Index(21), VisibleInDetailView(true), VisibleInListView(false), VisibleInLookupListView(false)]
+        public string DeliveryAddress
+        {
+            get { return _DeliveryAddress; }
+            set
+            {
+                SetPropertyValue("DeliveryAddress", ref _DeliveryAddress, value);
+            }
+        }
+
         private string _SAPDocNum;
         [XafDisplayName("SAP Doc Num")]
         [Appearance("SAPDocNum", Enabled = false)]
