@@ -440,11 +440,19 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="PurchaseRequests_ListView_Approved" ClassName="PRPortal.Module.BusinessObjects.PR.PurchaseRequests" DetailViewID="PurchaseRequests_DetailView_Approved" MasterDetailView="PurchaseRequests_DetailView" IsNewNode="True">
+    <ListView Id="PurchaseRequests_ListView">
+      <Columns>
+        <ColumnInfo Id="TotalAmount" Index="7" />
+        <ColumnInfo Id="AppStatus" Index="8" />
+        <ColumnInfo Id="SAPDocNum" Index="9" />
+      </Columns>
+    </ListView>
+    <ListView Id="PurchaseRequests_ListView_Approved" ClassName="PRPortal.Module.BusinessObjects.PR.PurchaseRequests" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="CostCentre" PropertyName="CostCentre" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="CreateDate" PropertyName="CreateDate" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="CreateUser" PropertyName="CreateUser" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DeliveryAddress" PropertyName="DeliveryAddress" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="DocType" PropertyName="DocType" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="EventorPurpose" PropertyName="EventorPurpose" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="NextApprover" PropertyName="NextApprover" Width="70" Index="-1" IsNewNode="True" />
@@ -462,15 +470,17 @@
         <ColumnInfo Id="DocDate" PropertyName="DocDate" Width="70" Index="4" IsNewNode="True" />
         <ColumnInfo Id="DeliveryDate" PropertyName="DeliveryDate" Width="70" Index="5" IsNewNode="True" />
         <ColumnInfo Id="Status" PropertyName="Status" Width="70" Index="6" IsNewNode="True" />
-        <ColumnInfo Id="AppStatus" PropertyName="AppStatus" Width="70" Index="7" IsNewNode="True" />
-        <ColumnInfo Id="SAPDocNum" PropertyName="SAPDocNum" Width="70" Index="8" IsNewNode="True" />
+        <ColumnInfo Id="TotalAmount" PropertyName="TotalAmount" Width="50" Index="7" IsNewNode="True" />
+        <ColumnInfo Id="AppStatus" PropertyName="AppStatus" Width="70" Index="8" IsNewNode="True" />
+        <ColumnInfo Id="SAPDocNum" PropertyName="SAPDocNum" Width="70" Index="9" IsNewNode="True" />
       </Columns>
     </ListView>
-    <ListView Id="PurchaseRequests_ListView_PendApp" ClassName="PRPortal.Module.BusinessObjects.PR.PurchaseRequests" DetailViewID="PurchaseRequests_DetailView_PendApp" MasterDetailView="PurchaseRequests_DetailView" IsNewNode="True">
+    <ListView Id="PurchaseRequests_ListView_PendApp" ClassName="PRPortal.Module.BusinessObjects.PR.PurchaseRequests" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="CostCentre" PropertyName="CostCentre" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="CreateDate" PropertyName="CreateDate" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="CreateUser" PropertyName="CreateUser" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DeliveryAddress" PropertyName="DeliveryAddress" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="DocType" PropertyName="DocType" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="EventorPurpose" PropertyName="EventorPurpose" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="NextApprover" PropertyName="NextApprover" Width="70" Index="-1" IsNewNode="True" />
@@ -488,21 +498,24 @@
         <ColumnInfo Id="DocDate" PropertyName="DocDate" Width="70" Index="4" IsNewNode="True" />
         <ColumnInfo Id="DeliveryDate" PropertyName="DeliveryDate" Width="70" Index="5" IsNewNode="True" />
         <ColumnInfo Id="Status" PropertyName="Status" Width="70" Index="6" IsNewNode="True" />
-        <ColumnInfo Id="AppStatus" PropertyName="AppStatus" Width="70" Index="7" IsNewNode="True" />
-        <ColumnInfo Id="SAPDocNum" PropertyName="SAPDocNum" Width="70" Index="8" IsNewNode="True" />
+        <ColumnInfo Id="TotalAmount" PropertyName="TotalAmount" Width="50" Index="7" IsNewNode="True" />
+        <ColumnInfo Id="AppStatus" PropertyName="AppStatus" Width="70" Index="8" IsNewNode="True" />
+        <ColumnInfo Id="SAPDocNum" PropertyName="SAPDocNum" Width="70" Index="9" IsNewNode="True" />
       </Columns>
     </ListView>
-    <ListView Id="PurchaseRequests_ListView_Procurement" ClassName="PRPortal.Module.BusinessObjects.PR.PurchaseRequests" DetailViewID="PurchaseRequests_DetailView_Procurement" MasterDetailView="PurchaseRequests_DetailView" IsNewNode="True">
+    <ListView Id="PurchaseRequests_ListView_Procurement" ClassName="PRPortal.Module.BusinessObjects.PR.PurchaseRequests" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="CostCentre" PropertyName="CostCentre" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="CreateDate" PropertyName="CreateDate" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="CreateUser" PropertyName="CreateUser" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DeliveryAddress" PropertyName="DeliveryAddress" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="DocType" PropertyName="DocType" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="EventorPurpose" PropertyName="EventorPurpose" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="NextApprover" PropertyName="NextApprover" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="Oid" PropertyName="Oid" Width="50" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="Remarks" PropertyName="Remarks" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="ReqEmail" PropertyName="ReqEmail" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Sap" PropertyName="Sap" Width="50" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="UpdateDate" PropertyName="UpdateDate" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="UpdateUser" PropertyName="UpdateUser" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="WhoApprove" PropertyName="WhoApprove" Width="70" Index="-1" IsNewNode="True" />
@@ -513,7 +526,9 @@
         <ColumnInfo Id="DocDate" PropertyName="DocDate" Width="70" Index="4" IsNewNode="True" />
         <ColumnInfo Id="DeliveryDate" PropertyName="DeliveryDate" Width="70" Index="5" IsNewNode="True" />
         <ColumnInfo Id="Status" PropertyName="Status" Width="70" Index="6" IsNewNode="True" />
-        <ColumnInfo Id="AppStatus" PropertyName="AppStatus" Width="70" Index="7" IsNewNode="True" />
+        <ColumnInfo Id="TotalAmount" PropertyName="TotalAmount" Width="50" Index="7" IsNewNode="True" />
+        <ColumnInfo Id="AppStatus" PropertyName="AppStatus" Width="70" Index="8" IsNewNode="True" />
+        <ColumnInfo Id="SAPDocNum" PropertyName="SAPDocNum" Width="70" Index="9" IsNewNode="True" />
       </Columns>
     </ListView>
     <ListView Id="PurchaseRequests_LookupListView" MasterDetailView="PurchaseRequests_DetailView" />

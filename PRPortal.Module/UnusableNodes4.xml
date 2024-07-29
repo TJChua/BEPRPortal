@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <ListView Id="PurchaseRequests_ListView_Procurement">
+      <Columns Id="Columns">
+        <ColumnInfo Id="VatSum" PropertyName="VatSum" Width="50" Index="7" />
+      </Columns>
+    </ListView>
+    <ListView Id="PurchaseRequests_ListView_PendApp">
+      <Columns Id="Columns">
+        <ColumnInfo Id="VatSum" PropertyName="VatSum" Width="50" Index="7" />
+      </Columns>
+    </ListView>
+    <ListView Id="PurchaseRequests_ListView_Approved">
+      <Columns Id="Columns">
+        <ColumnInfo Id="VatSum" PropertyName="VatSum" Width="50" Index="7" />
+      </Columns>
+    </ListView>
+    <ListView Id="PurchaseRequests_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="VatSum" Index="7" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

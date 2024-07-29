@@ -341,6 +341,27 @@ namespace PRPortal.Module.BusinessObjects.PR
             }
         }
 
+        private decimal _TotalAmount;
+        [XafDisplayName("Total Amount")]
+        [Index(28), VisibleInDetailView(false), VisibleInListView(true), VisibleInLookupListView(false)]
+        [ModelDefault("DisplayFormat", "{0:n2}")]
+        [ModelDefault("EditMask", "{0:n2}")]
+        [Appearance("TotalAmount", Enabled = false)]
+        [DbType("numeric(19,6)")]
+        public decimal TotalAmount
+        {
+            get
+            {
+                decimal temp = 0;
+                foreach (PurchaseRequestDetails dtl in this.PurchaseRequestDetails)
+                {
+                    temp = temp + dtl.Total;
+                }
+                return temp;
+            }
+            set { SetPropertyValue("TotalAmount", ref _TotalAmount, value); }
+        }
+
         private string _NextApprover;
         [XafDisplayName("Next Approver")]
         [Index(82), VisibleInListView(false), VisibleInDetailView(false), VisibleInLookupListView(false)]
