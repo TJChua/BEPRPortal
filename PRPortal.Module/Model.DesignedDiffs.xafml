@@ -447,7 +447,7 @@
         <ColumnInfo Id="SAPDocNum" Index="9" />
       </Columns>
     </ListView>
-    <ListView Id="PurchaseRequests_ListView_Approved" ClassName="PRPortal.Module.BusinessObjects.PR.PurchaseRequests" IsNewNode="True">
+    <ListView Id="PurchaseRequests_ListView_Approved" ClassName="PRPortal.Module.BusinessObjects.PR.PurchaseRequests" DetailViewID="PurchaseRequests_DetailView_Approved" MasterDetailView="PurchaseRequests_DetailView" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="CostCentre" PropertyName="CostCentre" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="CreateDate" PropertyName="CreateDate" Width="70" Index="-1" IsNewNode="True" />
@@ -475,7 +475,7 @@
         <ColumnInfo Id="SAPDocNum" PropertyName="SAPDocNum" Width="70" Index="9" IsNewNode="True" />
       </Columns>
     </ListView>
-    <ListView Id="PurchaseRequests_ListView_PendApp" ClassName="PRPortal.Module.BusinessObjects.PR.PurchaseRequests" IsNewNode="True">
+    <ListView Id="PurchaseRequests_ListView_PendApp" ClassName="PRPortal.Module.BusinessObjects.PR.PurchaseRequests" DetailViewID="PurchaseRequests_DetailView_PendApp" MasterDetailView="PurchaseRequests_DetailView" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="CostCentre" PropertyName="CostCentre" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="CreateDate" PropertyName="CreateDate" Width="70" Index="-1" IsNewNode="True" />
@@ -503,7 +503,7 @@
         <ColumnInfo Id="SAPDocNum" PropertyName="SAPDocNum" Width="70" Index="9" IsNewNode="True" />
       </Columns>
     </ListView>
-    <ListView Id="PurchaseRequests_ListView_Procurement" ClassName="PRPortal.Module.BusinessObjects.PR.PurchaseRequests" IsNewNode="True">
+    <ListView Id="PurchaseRequests_ListView_Procurement" ClassName="PRPortal.Module.BusinessObjects.PR.PurchaseRequests" DetailViewID="PurchaseRequests_DetailView_Procurement" MasterDetailView="PurchaseRequests_DetailView" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="CostCentre" PropertyName="CostCentre" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="CreateDate" PropertyName="CreateDate" Width="70" Index="-1" IsNewNode="True" />
