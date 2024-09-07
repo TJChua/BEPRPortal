@@ -352,12 +352,19 @@ namespace PRPortal.Module.BusinessObjects.PR
         {
             get
             {
-                decimal temp = 0;
-                foreach (PurchaseRequestDetails dtl in this.PurchaseRequestDetails)
+                if (Session.IsObjectsSaving != true)
                 {
-                    temp = temp + dtl.Total;
+                    decimal temp = 0;
+                    foreach (PurchaseRequestDetails dtl in this.PurchaseRequestDetails)
+                    {
+                        temp = temp + dtl.Total;
+                    }
+                    return temp;
                 }
-                return temp;
+                else
+                {
+                    return _TotalAmount;
+                }
             }
             set { SetPropertyValue("TotalAmount", ref _TotalAmount, value); }
         }

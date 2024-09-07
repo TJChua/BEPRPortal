@@ -37,13 +37,16 @@ namespace PRPortal.Module.Controllers
             MyDetailsController myDetailsController = Frame.GetController<MyDetailsController>();
             if (myDetailsController != null)
             {
-                if (user.Staff != null && user.Staff.StaffName != null)
+                if (user != null)
                 {
-                    myDetailsController.Actions[ActionItemId].Caption = user.Staff.StaffName;
-                }
-                else
-                {
-                    myDetailsController.Actions[ActionItemId].Caption = user.UserName;
+                    if (user.Staff != null && user.Staff.StaffName != null)
+                    {
+                        myDetailsController.Actions[ActionItemId].Caption = user.Staff.StaffName;
+                    }
+                    else
+                    {
+                        myDetailsController.Actions[ActionItemId].Caption = user.UserName;
+                    }
                 }
             }
         }
