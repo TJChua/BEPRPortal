@@ -28,7 +28,7 @@ namespace PRPortal.Web {
 
         public PRPortalAspNetApplication() {
             InitializeComponent();
-            this.LoggedOff += Application_LoggedOff;
+            //this.LoggedOff += Application_LoggedOff;
         }
         protected override IViewUrlManager CreateViewUrlManager() {
             return new ViewUrlManager();

@@ -126,13 +126,13 @@ namespace PRPortal.Module.Controllers
             }
         }
 
-        public string GenerateDocNum(DocTypeList doctype, IObjectSpace os)
+        public string GenerateDocNum(DocTypeList doctype, IObjectSpace os, string company)
         {
             string DocNum = null;
 
             try
             {
-                DocTypes snumber = os.FindObject<DocTypes>(CriteriaOperator.Parse("BoCode = ?", doctype));
+                DocTypes snumber = os.FindObject<DocTypes>(CriteriaOperator.Parse("BoCode = ? and Company.CompanyCode = ?", doctype, company));
 
                 if (DocNum == null)
                 {
@@ -156,7 +156,27 @@ namespace PRPortal.Module.Controllers
             }
             catch (Exception)
             {
-                return DocNum;
+                DocTypes snumber = os.FindObject<DocTypes>(CriteriaOperator.Parse("BoCode = ? and Company.CompanyCode = ?", doctype, company));
+
+                if (DocNum == null)
+                {
+                    DocNum = snumber.BoName + "-" + snumber.NextDocNum;
+                }
+
+                snumber.CurrectDocNum = snumber.NextDocNum;
+                snumber.NextDocNum = snumber.NextDocNum + 1;
+
+                PurchaseRequests pr = os.FindObject<PurchaseRequests>(CriteriaOperator.Parse("DocNum = ?", DocNum));
+
+                if (pr != null)
+                {
+                    DocNum = snumber.BoName + "-" + snumber.NextDocNum;
+
+                    snumber.CurrectDocNum = snumber.NextDocNum;
+                    snumber.NextDocNum = snumber.NextDocNum + 1;
+                }
+
+                os.CommitChanges();
             }
 
             return DocNum;

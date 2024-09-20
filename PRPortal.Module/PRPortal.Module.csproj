@@ -132,10 +132,13 @@
     <Compile Include="BusinessObjects\PR\PurchaseRequests.cs" />
     <Compile Include="BusinessObjects\Setup\Approvals.cs" />
     <Compile Include="BusinessObjects\Setup\ApprovalUsers.cs" />
+    <Compile Include="BusinessObjects\Setup\Company.cs" />
     <Compile Include="BusinessObjects\Setup\DocTypes.cs" />
     <Compile Include="BusinessObjects\Setup\StaffInfo.cs" />
+    <Compile Include="BusinessObjects\Setup\StaffInfoCompany.cs" />
     <Compile Include="BusinessObjects\SystemUsers.cs" />
     <Compile Include="BusinessObjects\View\vwBusinessPartner.cs" />
+    <Compile Include="BusinessObjects\View\vwCompany.cs" />
     <Compile Include="BusinessObjects\View\vwCostCentre.cs" />
     <Compile Include="BusinessObjects\View\vwDepartment.cs" />
     <Compile Include="BusinessObjects\View\vwItemMasters.cs" />

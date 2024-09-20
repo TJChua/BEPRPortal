@@ -14,6 +14,7 @@ using DevExpress.Persistent.Validation;
 using DevExpress.ExpressApp.ConditionalAppearance;
 using PRPortal.Module.BusinessObjects.View;
 using DevExpress.ExpressApp.Editors;
+using PRPortal.Module.BusinessObjects.PR;
 
 namespace PRPortal.Module.BusinessObjects
 {
@@ -91,7 +92,7 @@ namespace PRPortal.Module.BusinessObjects
         public int Oid;
 
         [XafDisplayName("Item Code")]
-        [DataSourceCriteria("frozenFor = 'N' and BE4U = 'Y'")]
+        [DataSourceCriteria("frozenFor = 'N' and BE4U = 'Y' and CompanyCode = '@this.DocNum.Company.CompanyCode'")]
         [LookupEditorMode(LookupEditorMode.AllItems)]
         [Index(1), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         public vwItemMasters ItemCode { get; set; }
@@ -112,9 +113,10 @@ namespace PRPortal.Module.BusinessObjects
 
         [XafDisplayName("DocNum")]
         [Index(10), VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
-        public string DocNum { get; set; }
+        public PurchaseRequests DocNum { get; set; }
 
         [XafDisplayName("Remarks")]
+        [Size(254)]
         [Index(13), VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
         public string Remarks { get; set; }
 
@@ -153,7 +155,7 @@ namespace PRPortal.Module.BusinessObjects
         [XafDisplayName("Item Code")]
         [Index(0), VisibleInListView(true), VisibleInDetailView(true), VisibleInLookupListView(true)]
         [Appearance("ItemCode", Enabled = false)]
-        public string ItemCode { get; set; }
+        public vwItemMasters ItemCode { get; set; }
 
         [XafDisplayName("Item Name")]
         [Index(1), VisibleInListView(true), VisibleInDetailView(true), VisibleInLookupListView(true)]
@@ -174,6 +176,7 @@ namespace PRPortal.Module.BusinessObjects
 
         [XafDisplayName("Remarks")]
         [Index(4), VisibleInDetailView(false), VisibleInListView(true), VisibleInLookupListView(true)]
+        [Size(254)]
         [Appearance("Remarks", Enabled = false)]
         public string Remarks { get; set; }
     }

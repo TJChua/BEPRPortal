@@ -43,9 +43,17 @@ namespace PRPortal.Module.BusinessObjects.View
 
         [Key]
         [Browsable(true)]
+        [XafDisplayName("Prikey")]
+        [Appearance("Prikey", Enabled = false)]
+        [Index(0), VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
+        public string Prikey
+        {
+            get; set;
+        }
+
         [XafDisplayName("Item Code")]
         [Appearance("ItemCode", Enabled = false)]
-        [Index(0), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
+        [Index(1), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         public string ItemCode
         {
             get; set;
@@ -118,6 +126,14 @@ namespace PRPortal.Module.BusinessObjects.View
         [Appearance("BE4U", Enabled = false)]
         [Index(23)]
         public string BE4U
+        {
+            get; set;
+        }
+
+        [XafDisplayName("CompanyCode")]
+        [Appearance("CompanyCode", Enabled = false)]
+        [Index(25), VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(true)]
+        public string CompanyCode
         {
             get; set;
         }

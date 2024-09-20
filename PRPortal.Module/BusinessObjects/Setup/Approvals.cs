@@ -142,9 +142,28 @@ namespace PRPortal.Module.BusinessObjects.Setup
             }
         }
 
+        private Company _Company;
+        [ImmediatePostData]
+        [XafDisplayName("Company")]
+        [DataSourceCriteria("IsActive = 'True'")]
+        [LookupEditorMode(LookupEditorMode.AllItems)]
+        [RuleRequiredField(DefaultContexts.Save)]
+        [Index(18)]
+        public Company Company
+        {
+            get { return _Company; }
+            set
+            {
+                SetPropertyValue("Company", ref _Company, value);
+            }
+        }
+
+
         private vwDepartment _Department;
         [NoForeignKey]
+        [ImmediatePostData]
         [XafDisplayName("Department")]
+        [DataSourceCriteria("CompanyCode = '@this.Company.CompanyCode'")]
         [LookupEditorMode(LookupEditorMode.AllItems)]
         [RuleRequiredField(DefaultContexts.Save)]
         [Index(15)]
@@ -159,7 +178,9 @@ namespace PRPortal.Module.BusinessObjects.Setup
 
         private vwCostCentre _CostCentre;
         [NoForeignKey]
+        [ImmediatePostData]
         [XafDisplayName("Cost Centre")]
+        [DataSourceCriteria("CompanyCode = '@this.Company.CompanyCode'")]
         [LookupEditorMode(LookupEditorMode.AllItems)]
         //[RuleRequiredField(DefaultContexts.Save)]
         [Index(18)]

@@ -13,6 +13,7 @@ using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
 using DevExpress.ExpressApp.ConditionalAppearance;
 using PRPortal.Module.BusinessObjects.View;
+using PRPortal.Module.BusinessObjects.Setup;
 
 namespace PRPortal.Module.BusinessObjects.PR
 {

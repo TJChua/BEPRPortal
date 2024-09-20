@@ -44,9 +44,17 @@ namespace PRPortal.Module.BusinessObjects.View
 
         [Key]
         [Browsable(true)]
+        [XafDisplayName("Prikey")]
+        [Appearance("Prikey", Enabled = false)]
+        [Index(0), VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
+        public string Prikey
+        {
+            get; set;
+        }
+
         [XafDisplayName("Warehouse Code")]
         [Appearance("WarehouseCode", Enabled = false)]
-        [Index(0)]
+        [Index(1)]
         public string WarehouseCode
         {
             get; set;
@@ -64,6 +72,14 @@ namespace PRPortal.Module.BusinessObjects.View
         [Appearance("DftBinAbs", Enabled = false)]
         [Index(5)]
         public string DftBinAbs
+        {
+            get; set;
+        }
+
+        [XafDisplayName("CompanyCode")]
+        [Appearance("CompanyCode", Enabled = false)]
+        [Index(8), VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(true)]
+        public string CompanyCode
         {
             get; set;
         }

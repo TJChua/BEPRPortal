@@ -66,18 +66,20 @@ namespace PRPortal.Module.BusinessObjects.PR
                 {
                     if (user.Staff.Department != null)
                     {
-                        Department = Session.FindObject<vwDepartment>(new BinaryOperator("DepartmentCode", user.Staff.Department.DepartmentCode));
+                        Department = Session.FindObject<vwDepartment>(new BinaryOperator("Prikey", user.Staff.Department.Prikey));
                     }
                     if (user.Staff.CostCentre != null)
                     {
-                        CostCentre = Session.FindObject<vwCostCentre>(new BinaryOperator("Code", user.Staff.CostCentre.Code));
+                        CostCentre = Session.FindObject<vwCostCentre>(new BinaryOperator("Prikey", user.Staff.CostCentre.Prikey));
                     }
+
+                    DocType = Session.FindObject<DocTypes>(CriteriaOperator.Parse("BoCode = 'PR' and Company.Oid = ?", user.Staff.Company.Oid));
+                    Company = Session.FindObject<vwCompany>(CriteriaOperator.Parse("StaffID = ? and IsDefault = '1'", user.Staff.Company.Oid));
                 }
             }
             CreateDate = DateTime.Now;
             DocDate = DateTime.Now;
             DeliveryDate = DateTime.Now;
-            DocType = Session.FindObject<DocTypes>(new BinaryOperator("BoCode", DocTypeList.PR));
 
             Status = DocStatus.Draft;
             AppStatus = ApprovalStatusType.Not_Applicable;
@@ -161,6 +163,23 @@ namespace PRPortal.Module.BusinessObjects.PR
             }
         }
 
+        private vwCompany _Company;
+        [ImmediatePostData]
+        [NoForeignKey]
+        [XafDisplayName("Company")]
+        [DataSourceCriteria("IsActive = 'True' and StaffID = '@this.CurrectUser.Staff.Oid'")]
+        [LookupEditorMode(LookupEditorMode.AllItems)]
+        [RuleRequiredField(DefaultContexts.Save)]
+        [Index(2)]
+        public vwCompany Company
+        {
+            get { return _Company; }
+            set
+            {
+                SetPropertyValue("Company", ref _Company, value);
+            }
+        }
+
         private vwDepartment _Department;
         [NoForeignKey]
         [XafDisplayName("Department")]
@@ -191,12 +210,13 @@ namespace PRPortal.Module.BusinessObjects.PR
             }
         }
 
-        private string _PIC;
+        private StaffInfo _PIC;
         [XafDisplayName("Procurement PIC")]
         [RuleRequiredField(DefaultContexts.Save)]
+        [DataSourceCriteria("Company.Oid = '@this.Company.StaffID'")]
         [ImmediatePostData]
         [Index(5), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(false)]
-        public string PIC
+        public StaffInfo PIC
         {
             get { return _PIC; }
             set
@@ -222,6 +242,7 @@ namespace PRPortal.Module.BusinessObjects.PR
         private vwCostCentre _CostCentre;
         [NoForeignKey]
         [XafDisplayName("Cost Centre")]
+        [DataSourceCriteria("CompanyCode = '@this.Company.CompanyCode'")]
         [Appearance("CostCentre", Enabled = false)]
         //[RuleRequiredField(DefaultContexts.Save)]
         [Index(7), VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
@@ -404,6 +425,17 @@ namespace PRPortal.Module.BusinessObjects.PR
             set
             {
                 SetPropertyValue("Sap", ref _Sap, value);
+            }
+        }
+
+        [Browsable(false)]
+        public SystemUsers CurrectUser
+        {
+            get
+            {
+                SystemUsers user = (SystemUsers)SecuritySystem.CurrentUser;
+
+                return user;
             }
         }
 

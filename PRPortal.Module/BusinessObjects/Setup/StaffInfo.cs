@@ -115,8 +115,10 @@ namespace PRPortal.Module.BusinessObjects.Setup
 
         private vwDepartment _Department;
         [NoForeignKey]
+        [ImmediatePostData]
         [LookupEditorMode(LookupEditorMode.AllItems)]
         [XafDisplayName("Department")]
+        [DataSourceCriteria("CompanyCode = '@this.Company.CompanyCode'")]
         [RuleRequiredField(DefaultContexts.Save)]
         [Index(13), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         public vwDepartment Department
@@ -130,8 +132,11 @@ namespace PRPortal.Module.BusinessObjects.Setup
 
         private vwCostCentre _CostCentre;
         [NoForeignKey]
+        [ImmediatePostData]
         [LookupEditorMode(LookupEditorMode.AllItems)]
         [XafDisplayName("Cost Centre")]
+        [DataSourceCriteria("CompanyCode = '@this.Company.CompanyCode'")]
+        [RuleRequiredField(DefaultContexts.Save)]
         [Index(15), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         public vwCostCentre CostCentre
         {
@@ -139,6 +144,20 @@ namespace PRPortal.Module.BusinessObjects.Setup
             set
             {
                 SetPropertyValue("CostCentre", ref _CostCentre, value);
+            }
+        }
+
+        private Company _Company;
+        [XafDisplayName("Default Company")]
+        [ImmediatePostData]
+        [Index(18), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
+        [DataSourceCriteria("IsActive = 'True'")]
+        public Company Company
+        {
+            get { return _Company; }
+            set
+            {
+                SetPropertyValue("Company", ref _Company, value);
             }
         }
 
@@ -159,6 +178,13 @@ namespace PRPortal.Module.BusinessObjects.Setup
         {
             get
             { return Session.IsNewObject(this); }
+        }
+
+        [Association("StaffInfo-StaffInfoCompany")]
+        [XafDisplayName("Company")]
+        public XPCollection<StaffInfoCompany> StaffInfoCompany
+        {
+            get { return GetCollection<StaffInfoCompany>("StaffInfoCompany"); }
         }
 
         private XPCollection<AuditDataItemPersistent> auditTrail;

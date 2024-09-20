@@ -97,6 +97,22 @@ namespace PRPortal.Module.BusinessObjects.Setup
             }
         }
 
+        private Company _Company;
+        [XafDisplayName("Company")]
+        [ImmediatePostData]
+        [RuleRequiredField(DefaultContexts.Save)]
+        [DataSourceCriteria("IsActive = 'True'")]
+        [Index(8)]
+        public Company Company
+        {
+            get { return _Company; }
+            set
+            {
+                SetPropertyValue("Company", ref _Company, value);
+            }
+
+        }
+
         private bool _IsActive;
         [XafDisplayName("Active")]
         [Index(20)]

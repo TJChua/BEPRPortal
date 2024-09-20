@@ -58,7 +58,7 @@ namespace PRPortal.Module.Web.Controllers
                 base.Save(args);
                 if (CurrObject.DocNum == null)
                 {
-                    CurrObject.DocNum = genCon.GenerateDocNum(DocTypeList.PR, ObjectSpace);
+                    CurrObject.DocNum = genCon.GenerateDocNum(DocTypeList.PR, ObjectSpace, CurrObject.Company.CompanyCode);
                 }
 
                 base.Save(args);

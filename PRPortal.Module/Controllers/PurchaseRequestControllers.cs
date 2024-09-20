@@ -228,6 +228,7 @@ namespace PRPortal.Module.Controllers
         private void SubmitPR_Execute(object sender, PopupWindowShowActionExecuteEventArgs e)
         {
             PurchaseRequests selectedObject = (PurchaseRequests)e.CurrentObject;
+            SystemUsers user = (SystemUsers)SecuritySystem.CurrentUser;
             StringParameters p = (StringParameters)e.PopupWindow.View.CurrentObject;
             if (p.IsErr) return;
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
@@ -278,6 +279,18 @@ namespace PRPortal.Module.Controllers
             {
                 if (genCon.SendEmail(emailsubject, emailbody, ToEmails) == 1)
                 {
+                    foreach (string ToEmail in ToEmails)
+                    {
+                        string INSEmailLog = "INSERT INTO EmailLog VALUES ('" + DateTime.Now + "', '" + ToEmail + "', '" + user.Oid + "', 'Get Approval')";
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        conn.Open();
+                        SqlCommand cmdlog = new SqlCommand(INSEmailLog, conn);
+                        SqlDataReader readerlog = cmdlog.ExecuteReader();
+                        conn.Close();
+                    }
                 }
             }
 
@@ -516,6 +529,18 @@ namespace PRPortal.Module.Controllers
                         {
                             if (genCon.SendEmail(emailsubject, emailbody, ToEmails) == 1)
                             {
+                                foreach (string ToEmail in ToEmails)
+                                {
+                                    string INSEmailLog = "INSERT INTO EmailLog VALUES ('" + DateTime.Now + "', '" + ToEmail + "', '" + user.Oid + "', 'Approval')";
+                                    if (conn.State == ConnectionState.Open)
+                                    {
+                                        conn.Close();
+                                    }
+                                    conn.Open();
+                                    SqlCommand cmdlog = new SqlCommand(INSEmailLog, conn);
+                                    SqlDataReader readerlog = cmdlog.ExecuteReader();
+                                    conn.Close();
+                                }
                             }
                         }
                         #endregion
@@ -653,6 +678,18 @@ namespace PRPortal.Module.Controllers
                         {
                             if (genCon.SendEmail(emailsubject, emailbody, ToEmails) == 1)
                             {
+                                foreach (string ToEmail in ToEmails)
+                                {
+                                    string INSEmailLog = "INSERT INTO EmailLog VALUES ('" + DateTime.Now + "', '" + ToEmail + "', '" + user.Oid + "', 'Approval')";
+                                    if (conn.State == ConnectionState.Open)
+                                    {
+                                        conn.Close();
+                                    }
+                                    conn.Open();
+                                    SqlCommand cmdlog = new SqlCommand(INSEmailLog, conn);
+                                    SqlDataReader readerlog = cmdlog.ExecuteReader();
+                                    conn.Close();
+                                }
                             }
                         }
                         #endregion
@@ -718,7 +755,7 @@ namespace PRPortal.Module.Controllers
             foreach (InputItemDetails dtl in addnew.Results)
             {
                 PurchaseRequestDetails PODetails = ObjectSpace.CreateObject<PurchaseRequestDetails>();
-                PODetails.ItemCode = PODetails.Session.GetObjectByKey<vwItemMasters>(dtl.ItemCode);
+                PODetails.ItemCode = PODetails.Session.GetObjectByKey<vwItemMasters>(dtl.ItemCode.Prikey);
                 PODetails.Quantity = dtl.OrderQty;
                 PODetails.UnitPrice = dtl.UnitPrice;
                 PODetails.Remarks = dtl.Remarks;
@@ -735,7 +772,7 @@ namespace PRPortal.Module.Controllers
 
             if (trx.DocNum == null)
             {
-                trx.DocNum = genCon.GenerateDocNum(DocTypeList.PR, ObjectSpace);
+                trx.DocNum = genCon.GenerateDocNum(DocTypeList.PR, ObjectSpace, trx.Company.CompanyCode);
             }
 
             ObjectSpace.CommitChanges();
@@ -747,7 +784,7 @@ namespace PRPortal.Module.Controllers
             DetailView detailView = Application.CreateDetailView(nonPersistentOS, itemlist);
             detailView.ViewEditMode = DevExpress.ExpressApp.Editors.ViewEditMode.Edit;
             ((InputItem)detailView.CurrentObject).OrderQty = 1;
-            ((InputItem)detailView.CurrentObject).DocNum = trx.DocNum;
+            ((InputItem)detailView.CurrentObject).DocNum = trx;
             ((InputItem)detailView.CurrentObject).Doctype = DocTypeList.PR;
 
             //// For PK
@@ -828,7 +865,7 @@ namespace PRPortal.Module.Controllers
             }
 
             InputItemDetails addnewitem = ObjectSpace.CreateObject<InputItemDetails>();
-            addnewitem.ItemCode = currentobject.ItemCode.ItemCode;
+            addnewitem.ItemCode = ObjectSpace.GetObjectByKey<vwItemMasters>(currentobject.ItemCode.Prikey);
             addnewitem.ItemName = currentobject.ItemCode.ItemName;
             addnewitem.OrderQty = currentobject.OrderQty;
             addnewitem.UnitPrice = currentobject.UnitPrice;
@@ -1042,7 +1079,9 @@ namespace PRPortal.Module.Controllers
         private void SubmitPRReq_Execute(object sender, PopupWindowShowActionExecuteEventArgs e)
         {
             PurchaseRequests selectedObject = (PurchaseRequests)e.CurrentObject;
+            SystemUsers user = (SystemUsers)SecuritySystem.CurrentUser;
             StringParameters p = (StringParameters)e.PopupWindow.View.CurrentObject;
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
             if (p.IsErr) return;
 
             selectedObject.Status = DocStatus.PendingPIC;
@@ -1053,6 +1092,50 @@ namespace PRPortal.Module.Controllers
 
             ObjectSpace.CommitChanges();
             ObjectSpace.Refresh();
+
+            if (selectedObject.PIC != null)
+            {
+                List<string> ToEmails = new List<string>();
+                string emailbody = "";
+                string emailsubject = "";
+                string emailaddress = "";
+                Guid emailuser;
+                DateTime emailtime = DateTime.Now;
+
+                if (selectedObject.PIC.StaffEmail != null)
+                {
+                    emailbody = "Dear Sir/Madam, " + System.Environment.NewLine + System.Environment.NewLine +
+                        "Please click following link to approve the Purchase Request. (" + selectedObject.DocNum + ")" + 
+                        System.Environment.NewLine + GeneralSettings.appurl +
+                        "#ViewID=PurchaseRequests_DetailView&ObjectKey=" + selectedObject.Oid + "&ObjectClassName=PRPortal.Module.BusinessObjects.PR.PurchaseRequests&mode=View" +
+                        System.Environment.NewLine + System.Environment.NewLine;
+
+                    emailsubject = "Purchase Requests Pending PIC Approval";
+                    emailaddress = selectedObject.PIC.StaffEmail;
+                    emailuser = user.Oid;
+
+                    ToEmails.Add(emailaddress);
+                }
+
+                if (ToEmails.Count > 0)
+                {
+                    if (genCon.SendEmail(emailsubject, emailbody, ToEmails) == 1)
+                    {
+                        foreach (string ToEmail in ToEmails)
+                        {
+                            string INSEmailLog = "INSERT INTO EmailLog VALUES ('" + DateTime.Now + "', '" + ToEmail + "', '" + user.Oid + "', 'Pending PIC')";
+                            if (conn.State == ConnectionState.Open)
+                            {
+                                conn.Close();
+                            }
+                            conn.Open();
+                            SqlCommand cmdlog = new SqlCommand(INSEmailLog, conn);
+                            SqlDataReader readerlog = cmdlog.ExecuteReader();
+                            conn.Close();
+                        }
+                    }
+                }
+            }
 
             IObjectSpace pos = Application.CreateObjectSpace();
             PurchaseRequests ptrx = pos.FindObject<PurchaseRequests>(new BinaryOperator("Oid", selectedObject.Oid));
