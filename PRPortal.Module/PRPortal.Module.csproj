@@ -140,6 +140,7 @@
     <Compile Include="BusinessObjects\View\vwBusinessPartner.cs" />
     <Compile Include="BusinessObjects\View\vwCompany.cs" />
     <Compile Include="BusinessObjects\View\vwCostCentre.cs" />
+    <Compile Include="BusinessObjects\View\vwCurrency.cs" />
     <Compile Include="BusinessObjects\View\vwDepartment.cs" />
     <Compile Include="BusinessObjects\View\vwItemMasters.cs" />
     <Compile Include="BusinessObjects\View\vwPaymentTerm.cs" />

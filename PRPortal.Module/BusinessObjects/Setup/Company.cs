@@ -12,6 +12,7 @@ using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
 using DevExpress.ExpressApp.ConditionalAppearance;
+using PRPortal.Module.BusinessObjects.View;
 
 namespace PRPortal.Module.BusinessObjects.Setup
 {
@@ -41,6 +42,7 @@ namespace PRPortal.Module.BusinessObjects.Setup
 
         private string _CompanyCode;
         [XafDisplayName("Company Code")]
+        [ImmediatePostData]
         [Appearance("CompanyCode", Enabled = false, Criteria = "not IsNew")]
         [Index(0)]
         [RuleRequiredField(DefaultContexts.Save)]
@@ -76,6 +78,21 @@ namespace PRPortal.Module.BusinessObjects.Setup
             set
             {
                 SetPropertyValue("CompanyDB", ref _CompanyDB, value);
+            }
+        }
+
+        private vwCurrency _Currency;
+        [NoForeignKey]
+        [DataSourceCriteria("CompanyCode = '@this.CompanyCode'")]
+        [XafDisplayName("Currency")]
+        [Index(5)]
+        [RuleRequiredField(DefaultContexts.Save)]
+        public vwCurrency Currency
+        {
+            get { return _Currency; }
+            set
+            {
+                SetPropertyValue("Currency", ref _Currency, value);
             }
         }
 

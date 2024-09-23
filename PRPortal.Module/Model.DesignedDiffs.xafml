@@ -66,6 +66,16 @@
     <SchemaModule Name="SystemModule" Version="20.2.5.0" IsNewNode="True" />
   </SchemaModules>
   <Views>
+    <ListView Id="Approvals_AuditTrail_ListView">
+      <Columns>
+        <ColumnInfo Id="PropertyName" Index="-1" />
+        <ColumnInfo Id="UserName" SortIndex="-1" SortOrder="None" />
+        <ColumnInfo Id="ModifiedOn" SortIndex="0" SortOrder="Descending" />
+        <ColumnInfo Id="OperationType" SortIndex="-1" SortOrder="None" />
+        <ColumnInfo Id="OldValue" Index="3" />
+        <ColumnInfo Id="NewValue" Index="4" />
+      </Columns>
+    </ListView>
     <DetailView Id="Approvals_DetailView">
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
@@ -99,6 +109,24 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="Company_AuditTrail_ListView">
+      <Columns>
+        <ColumnInfo Id="PropertyName" Index="-1" />
+        <ColumnInfo Id="UserName" SortIndex="-1" SortOrder="None" />
+        <ColumnInfo Id="ModifiedOn" SortIndex="0" SortOrder="Descending" />
+        <ColumnInfo Id="OldValue" Index="3" />
+        <ColumnInfo Id="NewValue" Index="4" />
+      </Columns>
+    </ListView>
+    <ListView Id="DocTypes_AuditTrail_ListView">
+      <Columns>
+        <ColumnInfo Id="PropertyName" Index="-1" />
+        <ColumnInfo Id="UserName" SortIndex="-1" SortOrder="None" />
+        <ColumnInfo Id="ModifiedOn" SortIndex="0" SortOrder="Descending" />
+        <ColumnInfo Id="OldValue" Index="3" />
+        <ColumnInfo Id="NewValue" Index="4" />
+      </Columns>
+    </ListView>
     <DetailView Id="InputItem_DetailView">
       <Items>
         <ActionContainerViewItem Id="AddItem" ActionContainer="ListView" Caption="AddItem" IsNewNode="True" />
@@ -163,6 +191,15 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="PurchaseRequests_AuditTrail_ListView">
+      <Columns>
+        <ColumnInfo Id="PropertyName" Index="-1" />
+        <ColumnInfo Id="UserName" SortIndex="-1" SortOrder="None" />
+        <ColumnInfo Id="ModifiedOn" SortIndex="0" SortOrder="Descending" />
+        <ColumnInfo Id="OldValue" Index="3" />
+        <ColumnInfo Id="NewValue" Index="4" />
+      </Columns>
+    </ListView>
     <DetailView Id="PurchaseRequests_DetailView">
       <Items>
         <ActionContainerViewItem Id="AddItem" ActionContainer="ListView" Caption="AddItem" Orientation="Vertical" IsNewNode="True" />
@@ -578,6 +615,15 @@
     </ListView>
     <ListView Id="PurchaseRequests_LookupListView" MasterDetailView="PurchaseRequests_DetailView" />
     <ListView Id="PurchaseRequests_PurchaseRequestDetails_ListView" AllowEdit="True" />
+    <ListView Id="StaffInfo_AuditTrail_ListView">
+      <Columns>
+        <ColumnInfo Id="PropertyName" Index="-1" />
+        <ColumnInfo Id="UserName" SortIndex="-1" SortOrder="None" />
+        <ColumnInfo Id="ModifiedOn" SortIndex="0" SortOrder="Descending" />
+        <ColumnInfo Id="OldValue" Index="3" />
+        <ColumnInfo Id="NewValue" Index="4" />
+      </Columns>
+    </ListView>
     <DetailView Id="StaffInfo_DetailView">
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">

@@ -198,6 +198,10 @@ namespace Integration
                     oDoc.DocDueDate = oTargetDoc.DeliveryDate;
                     oDoc.RequriedDate = oTargetDoc.DeliveryDate;
                     oDoc.Comments = oTargetDoc.Remarks;
+                    if (oTargetDoc.Company.Currency != null)
+                    {
+                        oDoc.DocCurrency = oTargetDoc.Company.Currency.CurrCode;
+                    }
                     oDoc.UserFields.Fields.Item("U_PortalDocNum").Value = oTargetDoc.DocNum;
 
                     if (sapempid > 0)
@@ -224,6 +228,10 @@ namespace Integration
                             oDoc.Lines.CostingCode = oTargetDoc.Department.DepartmentCode;
                         }
                         oDoc.Lines.UserFields.Fields.Item("U_PortalItemLine").Value = dtl.Oid.ToString();
+                        if (oTargetDoc.Company.Currency != null)
+                        {
+                            oDoc.Lines.Currency = oTargetDoc.Company.Currency.CurrCode;
+                        }
 
                         oDoc.Lines.ItemCode = dtl.ItemCode.ItemCode;
                         oDoc.Lines.ItemDescription = dtl.ItemDesc;

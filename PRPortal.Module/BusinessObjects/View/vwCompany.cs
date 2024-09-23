@@ -96,5 +96,14 @@ namespace PRPortal.Module.BusinessObjects.View
         {
             get; set;
         }
+
+        [XafDisplayName("Currency")]
+        [Appearance("Currency", Enabled = false)]
+        [NoForeignKey]
+        [Index(15)]
+        public vwCurrency Currency
+        {
+            get; set;
+        }
     }
 }

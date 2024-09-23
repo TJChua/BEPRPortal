@@ -367,7 +367,7 @@ namespace PRPortal.Module.Controllers
                     {
                         PurchaseRequestDetails newprdetails = os.CreateObject<PurchaseRequestDetails>();
 
-                        newprdetails.ItemCode = newprdetails.Session.GetObjectByKey<vwItemMasters>(dtl.ItemCode.ItemCode);
+                        newprdetails.ItemCode = newprdetails.Session.GetObjectByKey<vwItemMasters>(dtl.ItemCode.Prikey);
                         newprdetails.ItemDesc = dtl.ItemDesc;
                         newprdetails.UOM = dtl.UOM;
                         newprdetails.Quantity = dtl.Quantity;
