@@ -53,7 +53,8 @@ namespace Integration
 
                     #region PR 
                     IList<PurchaseRequests> pr = ListObjectSpace.GetObjects<PurchaseRequests>
-                    (CriteriaOperator.Parse("Sap = ? and ((Status = ? and AppStatus = ?) or (Status = ? and AppStatus = ?))", 0, 1, 0, 1, 1));
+                    (CriteriaOperator.Parse("Company.CompanyCode = ? and Sap = ? and ((Status = ? and AppStatus = ?) or (Status = ? and AppStatus = ?))",
+                    ConfigurationManager.AppSettings["CompanyPortal"].ToString(), 0, 1, 0, 1, 1));
 
                     foreach (PurchaseRequests dtlpr in pr)
                     {

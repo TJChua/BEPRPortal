@@ -1117,6 +1117,11 @@ namespace PRPortal.Module.Controllers
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
             if (p.IsErr) return;
 
+            if (selectedObject.PurchaseRequestDetails.Count() <= 0)
+            {
+                throw new InvalidOperationException("Unable to submit without details.");
+            }
+
             selectedObject.Status = DocStatus.PendingPIC;
             PurchaseRequestDocTrail ds = ObjectSpace.CreateObject<PurchaseRequestDocTrail>();
             ds.DocStatus = DocStatus.PendingPIC;
