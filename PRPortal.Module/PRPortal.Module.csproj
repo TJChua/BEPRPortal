@@ -129,6 +129,7 @@
     <Compile Include="BusinessObjects\PR\PurchaseRequestAttachment.cs" />
     <Compile Include="BusinessObjects\PR\PurchaseRequestDetails.cs" />
     <Compile Include="BusinessObjects\PR\PurchaseRequestDocTrail.cs" />
+    <Compile Include="BusinessObjects\PR\PurchaseRequestEmailLog.cs" />
     <Compile Include="BusinessObjects\PR\PurchaseRequests.cs" />
     <Compile Include="BusinessObjects\Setup\Approvals.cs" />
     <Compile Include="BusinessObjects\Setup\ApprovalUsers.cs" />

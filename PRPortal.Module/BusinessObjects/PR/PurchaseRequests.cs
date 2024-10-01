@@ -45,7 +45,7 @@ namespace PRPortal.Module.BusinessObjects.PR
 
     [Appearance("HideDelete", AppearanceItemType.Action, "True", TargetItems = "Delete", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
 
-     [Appearance("HideAddNew", AppearanceItemType.Action, "True", TargetItems = "AddItem", Criteria = "Remarks = null or EventorPurpose = null or Requester = null or ReqEmail = null or PIC = null", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
+     [Appearance("HideAddNew", AppearanceItemType.Action, "True", TargetItems = "AddItem", Criteria = "Remarks = null or EventorPurpose = null or Requester = null or ReqEmail = null or PIC = null or Currency = null", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
 
     public class PurchaseRequests : XPObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
@@ -75,6 +75,18 @@ namespace PRPortal.Module.BusinessObjects.PR
 
                     DocType = Session.FindObject<DocTypes>(CriteriaOperator.Parse("BoCode = 'PR' and Company.Oid = ?", user.Staff.Company.Oid));
                     Company = Session.FindObject<vwCompany>(CriteriaOperator.Parse("StaffID = ? and IsDefault = '1'", user.Staff.Company.Oid));
+
+                    if (Company != null)
+                    {
+                        Currency = Session.FindObject<vwCurrency>(CriteriaOperator.Parse("CurrCode = ? and CompanyCode = ?", 
+                            Company.Currency.CurrCode, Company.CompanyCode));
+
+                        if (Currency == null)
+                        {
+                            Currency = Session.FindObject<vwCurrency>(CriteriaOperator.Parse("CurrCode = ? and CompanyCode = ?",
+                                "MYR", Company.CompanyCode));
+                        }
+                    }
                 }
             }
             CreateDate = DateTime.Now;
@@ -182,6 +194,7 @@ namespace PRPortal.Module.BusinessObjects.PR
 
         private vwDepartment _Department;
         [NoForeignKey]
+        [ImmediatePostData]
         [XafDisplayName("Department")]
         [Appearance("Department", Enabled = false)]
         [LookupEditorMode(LookupEditorMode.AllItems)]
@@ -213,7 +226,8 @@ namespace PRPortal.Module.BusinessObjects.PR
         private StaffInfo _PIC;
         [XafDisplayName("Procurement PIC")]
         [RuleRequiredField(DefaultContexts.Save)]
-        [DataSourceCriteria("Company.Oid = '@this.Company.StaffID'")]
+        [DataSourceCriteria("Company.CompanyCode = '@this.Company.CompanyCode' and " +
+            "(Department.DepartmentCode = 'PRO' and Department.CompanyCode = '@this.Company.CompanyCode') and IsActive = 'True'")]
         [ImmediatePostData]
         [Index(5), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(false)]
         public StaffInfo PIC
@@ -267,8 +281,24 @@ namespace PRPortal.Module.BusinessObjects.PR
             }
         }
 
+        private vwCurrency _Currency;
+        [XafDisplayName("Currency")]
+        [NoForeignKey]
+        [DataSourceCriteria("CompanyCode = '@this.Company.CompanyCode'")]
+        [RuleRequiredField(DefaultContexts.Save)]
+        [Index(9), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(false)]
+        public vwCurrency Currency
+        {
+            get { return _Currency; }
+            set
+            {
+                SetPropertyValue("Currency", ref _Currency, value);
+            }
+        }
+
         private DateTime _DeliveryDate;
         [XafDisplayName("Delivery Date")]
+        [RuleRequiredField(DefaultContexts.Save)]
         [Index(10), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(false)]
         public DateTime DeliveryDate
         {
@@ -479,6 +509,13 @@ namespace PRPortal.Module.BusinessObjects.PR
         public XPCollection<PurchaseRequestAttachment> PurchaseRequestAttachment
         {
             get { return GetCollection<PurchaseRequestAttachment>("PurchaseRequestAttachment"); }
+        }
+
+        [Association("PurchaseRequests-PurchaseRequestEmailLog")]
+        [XafDisplayName("Email Log")]
+        public XPCollection<PurchaseRequestEmailLog> PurchaseRequestEmailLog
+        {
+            get { return GetCollection<PurchaseRequestEmailLog>("PurchaseRequestEmailLog"); }
         }
 
         private XPCollection<AuditDataItemPersistent> auditTrail;

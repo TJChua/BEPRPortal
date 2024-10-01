@@ -93,7 +93,6 @@ namespace PRPortal.Module.BusinessObjects
 
         [XafDisplayName("Item Code")]
         [DataSourceCriteria("frozenFor = 'N' and BE4U = 'Y' and CompanyCode = '@this.DocNum.Company.CompanyCode'")]
-        [LookupEditorMode(LookupEditorMode.AllItems)]
         [Index(1), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         public vwItemMasters ItemCode { get; set; }
 

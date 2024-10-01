@@ -155,6 +155,12 @@ namespace PRPortal.Module.BusinessObjects.Setup
             set
             {
                 SetPropertyValue("Company", ref _Company, value);
+                if (!IsLoading && value == null)
+                {
+                    Department = null;
+                    Currency = null;
+                    CostCentre = null;
+                }
             }
         }
 
@@ -176,6 +182,21 @@ namespace PRPortal.Module.BusinessObjects.Setup
             }
         }
 
+        private vwCurrency _Currency;
+        [XafDisplayName("Currency")]
+        [NoForeignKey]
+        [DataSourceCriteria("CompanyCode = '@this.Company.CompanyCode'")]
+        [RuleRequiredField(DefaultContexts.Save)]
+        [Index(16)]
+        public vwCurrency Currency
+        {
+            get { return _Currency; }
+            set
+            {
+                SetPropertyValue("Currency", ref _Currency, value);
+            }
+        }
+
         private vwCostCentre _CostCentre;
         [NoForeignKey]
         [ImmediatePostData]
@@ -183,7 +204,7 @@ namespace PRPortal.Module.BusinessObjects.Setup
         [DataSourceCriteria("CompanyCode = '@this.Company.CompanyCode'")]
         [LookupEditorMode(LookupEditorMode.AllItems)]
         //[RuleRequiredField(DefaultContexts.Save)]
-        [Index(18)]
+        [Index(20)]
         public vwCostCentre CostCentre
         {
             get { return _CostCentre; }

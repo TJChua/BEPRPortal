@@ -290,6 +290,17 @@ namespace PRPortal.Module.Controllers
                         SqlCommand cmdlog = new SqlCommand(INSEmailLog, conn);
                         SqlDataReader readerlog = cmdlog.ExecuteReader();
                         conn.Close();
+
+                        INSEmailLog = "	INSERT INTO PurchaseRequestEmailLog VALUES ('" + DateTime.Now + "', '" + ToEmail + "', '" + emailsubject + "', " +
+                            "'" + emailbody + "', 'Get Approval', '" + selectedObject.Oid + "', NULL, NULL)";
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                        conn.Open();
+                        SqlCommand cmdPRlog = new SqlCommand(INSEmailLog, conn);
+                        SqlDataReader readerPRlog = cmdPRlog.ExecuteReader();
+                        conn.Close();
                     }
                 }
             }
@@ -540,6 +551,17 @@ namespace PRPortal.Module.Controllers
                                     SqlCommand cmdlog = new SqlCommand(INSEmailLog, conn);
                                     SqlDataReader readerlog = cmdlog.ExecuteReader();
                                     conn.Close();
+
+                                    INSEmailLog = "	INSERT INTO PurchaseRequestEmailLog VALUES ('" + DateTime.Now + "', '" + ToEmail + "', '" + emailsubject + "', " +
+                                        "'" + emailbody + "', 'Approval', '" + pr.Oid + "', NULL, NULL)";
+                                    if (conn.State == ConnectionState.Open)
+                                    {
+                                        conn.Close();
+                                    }
+                                    conn.Open();
+                                    SqlCommand cmdPRlog = new SqlCommand(INSEmailLog, conn);
+                                    SqlDataReader readerPRlog = cmdPRlog.ExecuteReader();
+                                    conn.Close();
                                 }
                             }
                         }
@@ -688,6 +710,17 @@ namespace PRPortal.Module.Controllers
                                     conn.Open();
                                     SqlCommand cmdlog = new SqlCommand(INSEmailLog, conn);
                                     SqlDataReader readerlog = cmdlog.ExecuteReader();
+                                    conn.Close();
+
+                                    INSEmailLog = "	INSERT INTO PurchaseRequestEmailLog VALUES ('" + DateTime.Now + "', '" + ToEmail + "', '" + emailsubject + "', " +
+                                        "'" + emailbody + "', 'Approval', '" + pr.Oid + "', NULL, NULL)";
+                                    if (conn.State == ConnectionState.Open)
+                                    {
+                                        conn.Close();
+                                    }
+                                    conn.Open();
+                                    SqlCommand cmdPRlog = new SqlCommand(INSEmailLog, conn);
+                                    SqlDataReader readerPRlog = cmdPRlog.ExecuteReader();
                                     conn.Close();
                                 }
                             }
@@ -1131,6 +1164,17 @@ namespace PRPortal.Module.Controllers
                             conn.Open();
                             SqlCommand cmdlog = new SqlCommand(INSEmailLog, conn);
                             SqlDataReader readerlog = cmdlog.ExecuteReader();
+                            conn.Close();
+
+                            INSEmailLog = "	INSERT INTO PurchaseRequestEmailLog VALUES ('" + DateTime.Now + "', '" + ToEmail + "', '" + emailsubject + "', " +
+                                "'" + emailbody + "', 'Pending PIC', '" + selectedObject.Oid + "', NULL, NULL)";
+                            if (conn.State == ConnectionState.Open)
+                            {
+                                conn.Close();
+                            }
+                            conn.Open();
+                            SqlCommand cmdPRlog = new SqlCommand(INSEmailLog, conn);
+                            SqlDataReader readerPRlog = cmdPRlog.ExecuteReader();
                             conn.Close();
                         }
                     }

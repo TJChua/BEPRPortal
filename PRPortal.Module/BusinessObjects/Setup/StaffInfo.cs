@@ -136,7 +136,6 @@ namespace PRPortal.Module.BusinessObjects.Setup
         [LookupEditorMode(LookupEditorMode.AllItems)]
         [XafDisplayName("Cost Centre")]
         [DataSourceCriteria("CompanyCode = '@this.Company.CompanyCode'")]
-        [RuleRequiredField(DefaultContexts.Save)]
         [Index(15), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         public vwCostCentre CostCentre
         {
@@ -151,6 +150,7 @@ namespace PRPortal.Module.BusinessObjects.Setup
         [XafDisplayName("Default Company")]
         [ImmediatePostData]
         [Index(18), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
+        [RuleRequiredField(DefaultContexts.Save)]
         [DataSourceCriteria("IsActive = 'True'")]
         public Company Company
         {
