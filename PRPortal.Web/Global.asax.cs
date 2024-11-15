@@ -61,7 +61,9 @@ namespace PRPortal.Web {
 
             PRPortal.Module.BusinessObjects.GeneralSettings.DeliveryMethod = ConfigurationManager.AppSettings["DeliveryMethod"].ToString();
 
-            PRPortal.Module.BusinessObjects.GeneralSettings.appurl = System.Web.HttpContext.Current.Request.Url.AbsoluteUri; // + requestManager.GetQueryString(shortcut)
+            PRPortal.Module.BusinessObjects.GeneralSettings.appurl = System.Web.HttpContext.Current.Request.Url.Scheme + "://" +
+      System.Web.HttpContext.Current.Request.Url.Authority + System.Web.HttpContext.Current.Request.Url.Segments[0] +
+      System.Web.HttpContext.Current.Request.Url.Segments[1];
 
             #endregion
             WebApplication.Instance.CustomizeFormattingCulture += Instance_CustomizeFormattingCulture;

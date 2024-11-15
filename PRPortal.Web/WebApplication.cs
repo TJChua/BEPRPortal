@@ -30,9 +30,9 @@ namespace PRPortal.Web {
             InitializeComponent();
             //this.LoggedOff += Application_LoggedOff;
         }
-        protected override IViewUrlManager CreateViewUrlManager() {
-            return new ViewUrlManager();
-        }
+        //protected override IViewUrlManager CreateViewUrlManager() {
+        //    return new ViewUrlManager();
+        //}
         protected override void CreateDefaultObjectSpaceProvider(CreateCustomObjectSpaceProviderEventArgs args) {
             args.ObjectSpaceProvider = new SecuredObjectSpaceProvider((SecurityStrategyComplex)Security, GetDataStoreProvider(args.ConnectionString, args.Connection), true);
             args.ObjectSpaceProviders.Add(new NonPersistentObjectSpaceProvider(TypesInfo, null));

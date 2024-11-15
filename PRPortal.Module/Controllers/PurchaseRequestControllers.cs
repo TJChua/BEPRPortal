@@ -291,7 +291,7 @@ namespace PRPortal.Module.Controllers
                         SqlDataReader readerlog = cmdlog.ExecuteReader();
                         conn.Close();
 
-                        INSEmailLog = "	INSERT INTO PurchaseRequestEmailLog VALUES ('" + DateTime.Now + "', '" + ToEmail + "', '" + emailsubject + "', " +
+                        INSEmailLog = "	INSERT INTO PurchaseRequestEmailLog VALUES ('GETDATE(), '" + ToEmail + "', '" + emailsubject + "', " +
                             "'" + emailbody + "', 'Get Approval', '" + selectedObject.Oid + "', NULL, NULL)";
                         if (conn.State == ConnectionState.Open)
                         {
@@ -552,7 +552,7 @@ namespace PRPortal.Module.Controllers
                                     SqlDataReader readerlog = cmdlog.ExecuteReader();
                                     conn.Close();
 
-                                    INSEmailLog = "	INSERT INTO PurchaseRequestEmailLog VALUES ('" + DateTime.Now + "', '" + ToEmail + "', '" + emailsubject + "', " +
+                                    INSEmailLog = "	INSERT INTO PurchaseRequestEmailLog VALUES ('GETDATE(), '" + ToEmail + "', '" + emailsubject + "', " +
                                         "'" + emailbody + "', 'Approval', '" + pr.Oid + "', NULL, NULL)";
                                     if (conn.State == ConnectionState.Open)
                                     {
@@ -712,7 +712,7 @@ namespace PRPortal.Module.Controllers
                                     SqlDataReader readerlog = cmdlog.ExecuteReader();
                                     conn.Close();
 
-                                    INSEmailLog = "	INSERT INTO PurchaseRequestEmailLog VALUES ('" + DateTime.Now + "', '" + ToEmail + "', '" + emailsubject + "', " +
+                                    INSEmailLog = "	INSERT INTO PurchaseRequestEmailLog VALUES ('GETDATE(), '" + ToEmail + "', '" + emailsubject + "', " +
                                         "'" + emailbody + "', 'Approval', '" + pr.Oid + "', NULL, NULL)";
                                     if (conn.State == ConnectionState.Open)
                                     {
@@ -1171,7 +1171,7 @@ namespace PRPortal.Module.Controllers
                             SqlDataReader readerlog = cmdlog.ExecuteReader();
                             conn.Close();
 
-                            INSEmailLog = "	INSERT INTO PurchaseRequestEmailLog VALUES ('" + DateTime.Now + "', '" + ToEmail + "', '" + emailsubject + "', " +
+                            INSEmailLog = "	INSERT INTO PurchaseRequestEmailLog VALUES (GETDATE(), '" + ToEmail + "', '" + emailsubject + "', " +
                                 "'" + emailbody + "', 'Pending PIC', '" + selectedObject.Oid + "', NULL, NULL)";
                             if (conn.State == ConnectionState.Open)
                             {
