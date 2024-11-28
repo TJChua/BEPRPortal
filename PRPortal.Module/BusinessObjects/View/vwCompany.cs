@@ -16,7 +16,7 @@ using DevExpress.ExpressApp.ConditionalAppearance;
 namespace PRPortal.Module.BusinessObjects.View
 {
     [DefaultClassOptions]
-    [XafDisplayName("Company")]
+    [XafDisplayName("Company View")]
     [DefaultProperty("CompanyName")]
     [Appearance("HideNew", AppearanceItemType.Action, "True", TargetItems = "New", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]
     [Appearance("HideEdit", AppearanceItemType.Action, "True", TargetItems = "SwitchToEditMode; Edit", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide, Context = "Any")]

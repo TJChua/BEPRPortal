@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <ListView Id="PurchaseRequests_ListView_Approved" DetailViewID="PurchaseRequests_DetailView_Approved" />
+  </Views>
+</Application>

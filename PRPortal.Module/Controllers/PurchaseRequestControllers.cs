@@ -291,7 +291,7 @@ namespace PRPortal.Module.Controllers
                         SqlDataReader readerlog = cmdlog.ExecuteReader();
                         conn.Close();
 
-                        INSEmailLog = "	INSERT INTO PurchaseRequestEmailLog VALUES ('GETDATE(), '" + ToEmail + "', '" + emailsubject + "', " +
+                        INSEmailLog = "	INSERT INTO PurchaseRequestEmailLog VALUES (GETDATE(), '" + ToEmail + "', '" + emailsubject + "', " +
                             "'" + emailbody + "', 'Get Approval', '" + selectedObject.Oid + "', NULL, NULL)";
                         if (conn.State == ConnectionState.Open)
                         {
@@ -552,7 +552,7 @@ namespace PRPortal.Module.Controllers
                                     SqlDataReader readerlog = cmdlog.ExecuteReader();
                                     conn.Close();
 
-                                    INSEmailLog = "	INSERT INTO PurchaseRequestEmailLog VALUES ('GETDATE(), '" + ToEmail + "', '" + emailsubject + "', " +
+                                    INSEmailLog = "	INSERT INTO PurchaseRequestEmailLog VALUES (GETDATE(), '" + ToEmail + "', '" + emailsubject + "', " +
                                         "'" + emailbody + "', 'Approval', '" + pr.Oid + "', NULL, NULL)";
                                     if (conn.State == ConnectionState.Open)
                                     {
@@ -712,7 +712,7 @@ namespace PRPortal.Module.Controllers
                                     SqlDataReader readerlog = cmdlog.ExecuteReader();
                                     conn.Close();
 
-                                    INSEmailLog = "	INSERT INTO PurchaseRequestEmailLog VALUES ('GETDATE(), '" + ToEmail + "', '" + emailsubject + "', " +
+                                    INSEmailLog = "	INSERT INTO PurchaseRequestEmailLog VALUES (GETDATE(), '" + ToEmail + "', '" + emailsubject + "', " +
                                         "'" + emailbody + "', 'Approval', '" + pr.Oid + "', NULL, NULL)";
                                     if (conn.State == ConnectionState.Open)
                                     {
@@ -1145,7 +1145,7 @@ namespace PRPortal.Module.Controllers
                     emailbody = "Dear Sir/Madam, " + System.Environment.NewLine + System.Environment.NewLine +
                         "Please click following link to approve the Purchase Request. (" + selectedObject.DocNum + ")" + 
                         System.Environment.NewLine + GeneralSettings.appurl +
-                        "#ViewID=PurchaseRequests_DetailView&ObjectKey=" + selectedObject.Oid + "&ObjectClassName=PRPortal.Module.BusinessObjects.PR.PurchaseRequests&mode=View" +
+                        "#ViewID=PurchaseRequests_DetailView_Procurement&ObjectKey=" + selectedObject.Oid + "&ObjectClassName=PRPortal.Module.BusinessObjects.PR.PurchaseRequests&mode=View" +
                         System.Environment.NewLine + System.Environment.NewLine;
 
                     emailsubject = "Purchase Requests Pending PIC Approval";

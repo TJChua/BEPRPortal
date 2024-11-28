@@ -74,7 +74,7 @@ namespace PRPortal.Module.BusinessObjects.PR
                     }
 
                     DocType = Session.FindObject<DocTypes>(CriteriaOperator.Parse("BoCode = 'PR' and Company.Oid = ?", user.Staff.Company.Oid));
-                    Company = Session.FindObject<vwCompany>(CriteriaOperator.Parse("StaffID = ? and IsDefault = '1'", user.Staff.Company.Oid));
+                    Company = Session.FindObject<vwCompany>(CriteriaOperator.Parse("StaffID = ? and IsDefault = '1' and IsActive = 'True'", user.Staff.Oid));
 
                     if (Company != null)
                     {

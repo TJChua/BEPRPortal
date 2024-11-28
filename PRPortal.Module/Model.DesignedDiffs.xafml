@@ -288,13 +288,13 @@
         <PropertyEditor Id="CreateDate" PropertyName="CreateDate" IsNewNode="True" />
         <PropertyEditor Id="CreateUser" PropertyName="CreateUser" IsNewNode="True" />
         <PropertyEditor Id="Currency" PropertyName="Currency" IsNewNode="True" />
-        <PropertyEditor Id="DeliveryAddress" PropertyName="DeliveryAddress" View="" RowCount="2" IsNewNode="True" />
+        <PropertyEditor Id="DeliveryAddress" PropertyName="DeliveryAddress" RowCount="2" IsNewNode="True" />
         <PropertyEditor Id="DeliveryDate" PropertyName="DeliveryDate" IsNewNode="True" />
         <PropertyEditor Id="Department" PropertyName="Department" IsNewNode="True" />
         <PropertyEditor Id="DocDate" PropertyName="DocDate" IsNewNode="True" />
         <PropertyEditor Id="DocNum" PropertyName="DocNum" IsNewNode="True" />
         <PropertyEditor Id="DocType" PropertyName="DocType" IsNewNode="True" />
-        <PropertyEditor Id="EventorPurpose" PropertyName="EventorPurpose" View="" RowCount="2" IsNewNode="True" />
+        <PropertyEditor Id="EventorPurpose" PropertyName="EventorPurpose" RowCount="2" IsNewNode="True" />
         <PropertyEditor Id="NextApprover" PropertyName="NextApprover" IsNewNode="True" />
         <PropertyEditor Id="Oid" PropertyName="Oid" IsNewNode="True" />
         <PropertyEditor Id="PIC" PropertyName="PIC" IsNewNode="True" />
@@ -303,12 +303,14 @@
         <PropertyEditor Id="PurchaseRequestAttachment" PropertyName="PurchaseRequestAttachment" View="PurchaseRequests_PurchaseRequestAttachment_ListView" IsNewNode="True" />
         <PropertyEditor Id="PurchaseRequestDetails" PropertyName="PurchaseRequestDetails" View="PurchaseRequests_PurchaseRequestDetails_ListView" IsNewNode="True" />
         <PropertyEditor Id="PurchaseRequestDocTrail" PropertyName="PurchaseRequestDocTrail" View="PurchaseRequests_PurchaseRequestDocTrail_ListView" IsNewNode="True" />
+        <PropertyEditor Id="PurchaseRequestEmailLog" PropertyName="PurchaseRequestEmailLog" View="PurchaseRequests_PurchaseRequestEmailLog_ListView" IsNewNode="True" />
         <PropertyEditor Id="Remarks" PropertyName="Remarks" RowCount="2" IsNewNode="True" />
         <PropertyEditor Id="ReqEmail" PropertyName="ReqEmail" IsNewNode="True" />
         <PropertyEditor Id="Requester" PropertyName="Requester" IsNewNode="True" />
         <PropertyEditor Id="Sap" PropertyName="Sap" IsNewNode="True" />
         <PropertyEditor Id="SAPDocNum" PropertyName="SAPDocNum" IsNewNode="True" />
         <PropertyEditor Id="Status" PropertyName="Status" IsNewNode="True" />
+        <PropertyEditor Id="TotalAmount" PropertyName="TotalAmount" IsNewNode="True" />
         <PropertyEditor Id="UpdateDate" PropertyName="UpdateDate" IsNewNode="True" />
         <PropertyEditor Id="UpdateUser" PropertyName="UpdateUser" IsNewNode="True" />
         <PropertyEditor Id="WhoApprove" PropertyName="WhoApprove" IsNewNode="True" />
@@ -354,7 +356,10 @@
             <LayoutGroup Id="PurchaseRequestAttachment" Index="4" ShowCaption="True" RelativeSize="100" IsNewNode="True">
               <LayoutItem Id="PurchaseRequestAttachment" ViewItem="PurchaseRequestAttachment" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True" />
             </LayoutGroup>
-            <LayoutGroup Id="AuditTrail" Index="5" ShowCaption="True" RelativeSize="100" IsNewNode="True">
+            <LayoutGroup Id="PurchaseRequestEmailLog" Index="5" ShowCaption="True" IsNewNode="True">
+              <LayoutItem Id="PurchaseRequestEmailLog" ViewItem="PurchaseRequestEmailLog" ShowCaption="False" Index="0" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="AuditTrail" Index="6" ShowCaption="True" RelativeSize="100" IsNewNode="True">
               <LayoutItem Id="AuditTrail" ViewItem="AuditTrail" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True" />
             </LayoutGroup>
           </TabbedGroup>
@@ -371,13 +376,13 @@
         <PropertyEditor Id="CreateDate" PropertyName="CreateDate" IsNewNode="True" />
         <PropertyEditor Id="CreateUser" PropertyName="CreateUser" IsNewNode="True" />
         <PropertyEditor Id="Currency" PropertyName="Currency" IsNewNode="True" />
-        <PropertyEditor Id="DeliveryAddress" PropertyName="DeliveryAddress" View="" RowCount="2" IsNewNode="True" />
+        <PropertyEditor Id="DeliveryAddress" PropertyName="DeliveryAddress" RowCount="2" IsNewNode="True" />
         <PropertyEditor Id="DeliveryDate" PropertyName="DeliveryDate" IsNewNode="True" />
         <PropertyEditor Id="Department" PropertyName="Department" IsNewNode="True" />
         <PropertyEditor Id="DocDate" PropertyName="DocDate" IsNewNode="True" />
         <PropertyEditor Id="DocNum" PropertyName="DocNum" IsNewNode="True" />
         <PropertyEditor Id="DocType" PropertyName="DocType" IsNewNode="True" />
-        <PropertyEditor Id="EventorPurpose" PropertyName="EventorPurpose" View="" RowCount="2" IsNewNode="True" />
+        <PropertyEditor Id="EventorPurpose" PropertyName="EventorPurpose" RowCount="2" IsNewNode="True" />
         <PropertyEditor Id="NextApprover" PropertyName="NextApprover" IsNewNode="True" />
         <PropertyEditor Id="Oid" PropertyName="Oid" IsNewNode="True" />
         <PropertyEditor Id="PIC" PropertyName="PIC" IsNewNode="True" />
@@ -386,12 +391,14 @@
         <PropertyEditor Id="PurchaseRequestAttachment" PropertyName="PurchaseRequestAttachment" View="PurchaseRequests_PurchaseRequestAttachment_ListView" IsNewNode="True" />
         <PropertyEditor Id="PurchaseRequestDetails" PropertyName="PurchaseRequestDetails" View="PurchaseRequests_PurchaseRequestDetails_ListView" IsNewNode="True" />
         <PropertyEditor Id="PurchaseRequestDocTrail" PropertyName="PurchaseRequestDocTrail" View="PurchaseRequests_PurchaseRequestDocTrail_ListView" IsNewNode="True" />
+        <PropertyEditor Id="PurchaseRequestEmailLog" PropertyName="PurchaseRequestEmailLog" View="PurchaseRequests_PurchaseRequestEmailLog_ListView" IsNewNode="True" />
         <PropertyEditor Id="Remarks" PropertyName="Remarks" RowCount="2" IsNewNode="True" />
         <PropertyEditor Id="ReqEmail" PropertyName="ReqEmail" IsNewNode="True" />
         <PropertyEditor Id="Requester" PropertyName="Requester" IsNewNode="True" />
         <PropertyEditor Id="Sap" PropertyName="Sap" IsNewNode="True" />
         <PropertyEditor Id="SAPDocNum" PropertyName="SAPDocNum" IsNewNode="True" />
         <PropertyEditor Id="Status" PropertyName="Status" IsNewNode="True" />
+        <PropertyEditor Id="TotalAmount" PropertyName="TotalAmount" IsNewNode="True" />
         <PropertyEditor Id="UpdateDate" PropertyName="UpdateDate" IsNewNode="True" />
         <PropertyEditor Id="UpdateUser" PropertyName="UpdateUser" IsNewNode="True" />
         <PropertyEditor Id="WhoApprove" PropertyName="WhoApprove" IsNewNode="True" />
@@ -437,7 +444,10 @@
             <LayoutGroup Id="PurchaseRequestAttachment" Index="4" ShowCaption="True" RelativeSize="100" IsNewNode="True">
               <LayoutItem Id="PurchaseRequestAttachment" ViewItem="PurchaseRequestAttachment" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True" />
             </LayoutGroup>
-            <LayoutGroup Id="AuditTrail" Index="5" ShowCaption="True" RelativeSize="100" IsNewNode="True">
+            <LayoutGroup Id="PurchaseRequestEmailLog" Index="5" ShowCaption="True" IsNewNode="True">
+              <LayoutItem Id="PurchaseRequestEmailLog" ViewItem="PurchaseRequestEmailLog" ShowCaption="False" Index="0" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="AuditTrail" Index="6" ShowCaption="True" RelativeSize="100" IsNewNode="True">
               <LayoutItem Id="AuditTrail" ViewItem="AuditTrail" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True" />
             </LayoutGroup>
           </TabbedGroup>
@@ -454,13 +464,13 @@
         <PropertyEditor Id="CreateDate" PropertyName="CreateDate" IsNewNode="True" />
         <PropertyEditor Id="CreateUser" PropertyName="CreateUser" IsNewNode="True" />
         <PropertyEditor Id="Currency" PropertyName="Currency" IsNewNode="True" />
-        <PropertyEditor Id="DeliveryAddress" PropertyName="DeliveryAddress" View="" RowCount="2" IsNewNode="True" />
+        <PropertyEditor Id="DeliveryAddress" PropertyName="DeliveryAddress" RowCount="2" IsNewNode="True" />
         <PropertyEditor Id="DeliveryDate" PropertyName="DeliveryDate" IsNewNode="True" />
         <PropertyEditor Id="Department" PropertyName="Department" IsNewNode="True" />
         <PropertyEditor Id="DocDate" PropertyName="DocDate" IsNewNode="True" />
         <PropertyEditor Id="DocNum" PropertyName="DocNum" IsNewNode="True" />
         <PropertyEditor Id="DocType" PropertyName="DocType" IsNewNode="True" />
-        <PropertyEditor Id="EventorPurpose" PropertyName="EventorPurpose" View="" RowCount="2" IsNewNode="True" />
+        <PropertyEditor Id="EventorPurpose" PropertyName="EventorPurpose" RowCount="2" IsNewNode="True" />
         <PropertyEditor Id="NextApprover" PropertyName="NextApprover" IsNewNode="True" />
         <PropertyEditor Id="Oid" PropertyName="Oid" IsNewNode="True" />
         <PropertyEditor Id="PIC" PropertyName="PIC" IsNewNode="True" />
@@ -469,12 +479,14 @@
         <PropertyEditor Id="PurchaseRequestAttachment" PropertyName="PurchaseRequestAttachment" View="PurchaseRequests_PurchaseRequestAttachment_ListView" IsNewNode="True" />
         <PropertyEditor Id="PurchaseRequestDetails" PropertyName="PurchaseRequestDetails" View="PurchaseRequests_PurchaseRequestDetails_ListView" IsNewNode="True" />
         <PropertyEditor Id="PurchaseRequestDocTrail" PropertyName="PurchaseRequestDocTrail" View="PurchaseRequests_PurchaseRequestDocTrail_ListView" IsNewNode="True" />
+        <PropertyEditor Id="PurchaseRequestEmailLog" PropertyName="PurchaseRequestEmailLog" View="PurchaseRequests_PurchaseRequestEmailLog_ListView" IsNewNode="True" />
         <PropertyEditor Id="Remarks" PropertyName="Remarks" RowCount="2" IsNewNode="True" />
         <PropertyEditor Id="ReqEmail" PropertyName="ReqEmail" IsNewNode="True" />
         <PropertyEditor Id="Requester" PropertyName="Requester" IsNewNode="True" />
         <PropertyEditor Id="Sap" PropertyName="Sap" IsNewNode="True" />
         <PropertyEditor Id="SAPDocNum" PropertyName="SAPDocNum" IsNewNode="True" />
         <PropertyEditor Id="Status" PropertyName="Status" IsNewNode="True" />
+        <PropertyEditor Id="TotalAmount" PropertyName="TotalAmount" IsNewNode="True" />
         <PropertyEditor Id="UpdateDate" PropertyName="UpdateDate" IsNewNode="True" />
         <PropertyEditor Id="UpdateUser" PropertyName="UpdateUser" IsNewNode="True" />
         <PropertyEditor Id="WhoApprove" PropertyName="WhoApprove" IsNewNode="True" />
@@ -520,7 +532,10 @@
             <LayoutGroup Id="PurchaseRequestAttachment" Index="4" ShowCaption="True" RelativeSize="100" IsNewNode="True">
               <LayoutItem Id="PurchaseRequestAttachment" ViewItem="PurchaseRequestAttachment" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True" />
             </LayoutGroup>
-            <LayoutGroup Id="AuditTrail" Index="5" ShowCaption="True" RelativeSize="100" IsNewNode="True">
+            <LayoutGroup Id="PurchaseRequestEmailLog" Index="5" ShowCaption="True" IsNewNode="True">
+              <LayoutItem Id="PurchaseRequestEmailLog" ViewItem="PurchaseRequestEmailLog" ShowCaption="False" Index="0" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="AuditTrail" Index="6" ShowCaption="True" RelativeSize="100" IsNewNode="True">
               <LayoutItem Id="AuditTrail" ViewItem="AuditTrail" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True" />
             </LayoutGroup>
           </TabbedGroup>

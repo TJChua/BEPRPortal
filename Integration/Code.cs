@@ -199,9 +199,9 @@ namespace Integration
                     oDoc.DocDueDate = oTargetDoc.DeliveryDate;
                     oDoc.RequriedDate = oTargetDoc.DeliveryDate;
                     oDoc.Comments = oTargetDoc.Remarks;
-                    if (oTargetDoc.Company.Currency != null)
+                    if (oTargetDoc.Currency != null)
                     {
-                        oDoc.DocCurrency = oTargetDoc.Company.Currency.CurrCode;
+                        oDoc.DocCurrency = oTargetDoc.Currency.CurrCode;
                     }
                     oDoc.UserFields.Fields.Item("U_PortalDocNum").Value = oTargetDoc.DocNum;
 
@@ -229,9 +229,9 @@ namespace Integration
                             oDoc.Lines.CostingCode = oTargetDoc.Department.DepartmentCode;
                         }
                         oDoc.Lines.UserFields.Fields.Item("U_PortalItemLine").Value = dtl.Oid.ToString();
-                        if (oTargetDoc.Company.Currency != null)
+                        if (oTargetDoc.Currency != null)
                         {
-                            oDoc.Lines.Currency = oTargetDoc.Company.Currency.CurrCode;
+                            oDoc.Lines.Currency = oTargetDoc.Currency.CurrCode;
                         }
 
                         oDoc.Lines.ItemCode = dtl.ItemCode.ItemCode;
