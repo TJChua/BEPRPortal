@@ -199,10 +199,10 @@ namespace Integration
                     oDoc.DocDueDate = oTargetDoc.DeliveryDate;
                     oDoc.RequriedDate = oTargetDoc.DeliveryDate;
                     oDoc.Comments = oTargetDoc.Remarks;
-                    if (oTargetDoc.Currency != null)
-                    {
-                        oDoc.DocCurrency = oTargetDoc.Currency.CurrCode;
-                    }
+                    //if (oTargetDoc.Currency != null)
+                    //{
+                    //    oDoc.DocCurrency = oTargetDoc.Currency.CurrCode;
+                    //}
                     oDoc.UserFields.Fields.Item("U_PortalDocNum").Value = oTargetDoc.DocNum;
 
                     if (sapempid > 0)
@@ -219,7 +219,6 @@ namespace Integration
                         }
                         else
                         {
-                            oDoc.Lines.Add();
                             oDoc.Lines.SetCurrentLine(oDoc.Lines.Count - 1);
                         }
 
@@ -238,7 +237,10 @@ namespace Integration
                         oDoc.Lines.ItemDescription = dtl.ItemDesc;
                         oDoc.Lines.ItemDetails = dtl.Remarks;
                         oDoc.Lines.Quantity = (double)dtl.Quantity;
-                        oDoc.Lines.LineTotal = (double)dtl.Total;
+                        oDoc.Lines.UnitPrice = (double)dtl.UnitPrice;
+                        //oDoc.Lines.LineTotal = (double)dtl.Total;
+
+                        oDoc.Lines.Add();
                     }
 
                     if (oTargetDoc.PurchaseRequestAttachment != null && oTargetDoc.PurchaseRequestAttachment.Count > 0)
