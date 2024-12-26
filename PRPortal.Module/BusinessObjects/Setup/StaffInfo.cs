@@ -152,6 +152,7 @@ namespace PRPortal.Module.BusinessObjects.Setup
         [Index(18), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(true)]
         [RuleRequiredField(DefaultContexts.Save)]
         [DataSourceCriteria("IsActive = 'True'")]
+        [Appearance("Company", Enabled = false, Criteria = "Not IsNew")]
         public Company Company
         {
             get { return _Company; }
