@@ -22,6 +22,7 @@ using DevExpress.ExpressApp.Web;
 using DevExpress.ExpressApp.Web.Editors.ASPx;
 using DevExpress.ExpressApp.Xpo;
 using DevExpress.Persistent.Base;
+using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 using DevExpress.Persistent.Validation;
 using DevExpress.Web;
 using DevExpress.Xpo.DB;
@@ -100,14 +101,32 @@ namespace PRPortal.Module.Controllers
             }
             else if (View.Id == "PurchaseRequests_ListView_PendApp")
             {
-                this.ApprovePR.Active.SetItemValue("Enabled", true);
+                PermissionPolicyRole approval = ObjectSpace.FindObject<PermissionPolicyRole>(CriteriaOperator.Parse("IsCurrentUserInRole('ApprovalUserRole')"));
+
+                if (approval != null)
+                {
+                    this.ApprovePR.Active.SetItemValue("Enabled", true);
+                }
+                else
+                {
+                    this.ApprovePR.Active.SetItemValue("Enabled", false);
+                }
                 this.EscalateUser.Active.SetItemValue("Enabled", true);
             }
             else if (View.Id == "PurchaseRequests_DetailView_PendApp")
             {
                 if (((DetailView)View).ViewEditMode == ViewEditMode.View)
                 {
-                    this.ApprovePR.Active.SetItemValue("Enabled", true);
+                    PermissionPolicyRole approval = ObjectSpace.FindObject<PermissionPolicyRole>(CriteriaOperator.Parse("IsCurrentUserInRole('ApprovalUserRole')"));
+
+                    if (approval != null)
+                    {
+                        this.ApprovePR.Active.SetItemValue("Enabled", true);
+                    }
+                    else
+                    {
+                        this.ApprovePR.Active.SetItemValue("Enabled", false);
+                    }
                 }
                 else
                 {
