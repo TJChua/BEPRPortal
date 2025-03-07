@@ -226,8 +226,7 @@ namespace PRPortal.Module.BusinessObjects.PR
         private StaffInfo _PIC;
         [XafDisplayName("Procurement PIC")]
         [RuleRequiredField(DefaultContexts.Save)]
-        [DataSourceCriteria("Company.CompanyCode = '@this.Company.CompanyCode' and " +
-            "(Department.DepartmentCode = 'PRO' and Department.CompanyCode = '@this.Company.CompanyCode') and IsActive = 'True'")]
+        [DataSourceCriteria("Department.DepartmentCode = 'PRO' and IsActive = 'True'")]
         [ImmediatePostData]
         [Index(5), VisibleInDetailView(true), VisibleInListView(true), VisibleInLookupListView(false)]
         public StaffInfo PIC
