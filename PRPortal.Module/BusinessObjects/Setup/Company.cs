@@ -81,11 +81,24 @@ namespace PRPortal.Module.BusinessObjects.Setup
             }
         }
 
+        private string _ReportSuffix;
+        [XafDisplayName("Report Suffix")]
+        [Index(6)]
+        [RuleRequiredField(DefaultContexts.Save)]
+        public string ReportSuffix
+        {
+            get { return _ReportSuffix; }
+            set
+            {
+                SetPropertyValue("ReportSuffix", ref _ReportSuffix, value);
+            }
+        }
+
         private vwCurrency _Currency;
         [NoForeignKey]
         [DataSourceCriteria("CompanyCode = '@this.CompanyCode'")]
         [XafDisplayName("Currency")]
-        [Index(5)]
+        [Index(8)]
         [RuleRequiredField(DefaultContexts.Save)]
         public vwCurrency Currency
         {

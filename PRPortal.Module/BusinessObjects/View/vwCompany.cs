@@ -105,5 +105,13 @@ namespace PRPortal.Module.BusinessObjects.View
         {
             get; set;
         }
+
+        [XafDisplayName("ReportSuffix")]
+        [Appearance("ReportSuffix", Enabled = false)]
+        [Index(18)]
+        public string ReportSuffix
+        {
+            get; set;
+        }
     }
 }

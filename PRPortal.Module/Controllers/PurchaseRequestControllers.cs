@@ -1066,7 +1066,7 @@ namespace PRPortal.Module.Controllers
                 try
                 {
                     ReportDocument doc = new ReportDocument();
-                    doc.Load(HttpContext.Current.Server.MapPath("~\\Reports\\[BE] Purchase Request.rpt"));
+                    doc.Load(HttpContext.Current.Server.MapPath("~\\Reports\\[BE] Purchase Request" + "-" + pr.Company.ReportSuffix +".rpt"));
                     strServer = ConfigurationManager.AppSettings.Get("SQLserver").ToString();
                     strDatabase = conn.Database;
                     strUserID = ConfigurationManager.AppSettings.Get("SQLID").ToString();
