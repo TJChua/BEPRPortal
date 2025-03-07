@@ -189,6 +189,12 @@ namespace PRPortal.Module.BusinessObjects.PR
             set
             {
                 SetPropertyValue("Company", ref _Company, value);
+                if (!IsLoading)
+                {
+                    DocType = Session.FindObject<DocTypes>(CriteriaOperator.Parse("BoCode = 'PR' and Company.CompanyCode = ?", Company.CompanyCode));
+                    Currency = Session.FindObject<vwCurrency>(CriteriaOperator.Parse("CurrCode = ? and CompanyCode = ?", 
+                        Company.Currency.CurrCode, Company.CompanyCode));
+                }
             }
         }
 
