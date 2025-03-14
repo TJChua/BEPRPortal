@@ -191,6 +191,8 @@ namespace PRPortal.Module.BusinessObjects.PR
                 SetPropertyValue("Company", ref _Company, value);
                 if (!IsLoading)
                 {
+                    SystemUsers user = (SystemUsers)SecuritySystem.CurrentUser;
+                    Department = Session.FindObject<vwDepartment>(CriteriaOperator.Parse("DepartmentCode = ? and CompanyCode = ?", user.Staff.Department.DepartmentCode,  Company.CompanyCode));
                     DocType = Session.FindObject<DocTypes>(CriteriaOperator.Parse("BoCode = 'PR' and Company.CompanyCode = ?", Company.CompanyCode));
                     Currency = Session.FindObject<vwCurrency>(CriteriaOperator.Parse("CurrCode = ? and CompanyCode = ?", 
                         Company.Currency.CurrCode, Company.CompanyCode));
