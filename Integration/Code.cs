@@ -238,6 +238,8 @@ namespace Integration
                         oDoc.Lines.ItemDetails = dtl.Remarks;
                         oDoc.Lines.Quantity = (double)dtl.Quantity;
                         oDoc.Lines.UnitPrice = (double)dtl.UnitPrice;
+                        oDoc.Lines.DiscountPercent = 0;
+
                         //oDoc.Lines.LineTotal = (double)dtl.Total;
 
                         oDoc.Lines.Add();
