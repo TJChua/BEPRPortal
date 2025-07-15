@@ -275,7 +275,7 @@ namespace Integration
                                         attfile += "." + fexe[x];
                                 }
                             }
-                            oAtt.Lines.FileName = g.ToString() + attfile;
+                            oAtt.Lines.FileName = attfile;
                             if (fexe.Length > 1)
                                 oAtt.Lines.FileExtension = fexe[fexe.Length - 1];
                             string path = ConfigurationManager.AppSettings["B1AttachmentPath"].ToString();

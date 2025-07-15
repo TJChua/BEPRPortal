@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRPortal.Win", "PRPortal.Wi
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LoginScreen", "LoginScreen\", "{D6D8DCA6-B6CC-42B8-82E7-39D04A482EAB}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.1"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_64785"
 		Debug.AspNetCompiler.PhysicalPath = "LoginScreen\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_64785\"
