@@ -158,6 +158,7 @@
     <Compile Include="BusinessObjects\Setup\DocTypes.cs" />
     <Compile Include="BusinessObjects\Setup\StaffInfo.cs" />
     <Compile Include="BusinessObjects\Setup\StaffInfoCompany.cs" />
+    <Compile Include="BusinessObjects\Setup\TestMenuItem.cs" />
     <Compile Include="BusinessObjects\SystemUsers.cs" />
     <Compile Include="BusinessObjects\View\vwBusinessPartner.cs" />
     <Compile Include="BusinessObjects\View\vwCompany.cs" />
